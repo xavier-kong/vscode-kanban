@@ -1,0 +1,1 @@
+I love kanban boards as much as anyone, but certain features are lacking in most kanban providers out there which I feel are essentially to my own productivity. Therfore, like any developer, I will attempt to spend way too much time on solving a problem that probably isn't that important anyways.
