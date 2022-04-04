@@ -2,9 +2,10 @@ import React from 'react';
 import CreateColumnButton from '../components/CreateColumnButton';
 
 function Kanban() {
+    function createColumn() {}
     return (
         <div>
-            <CreateColumnButton />
+            <CreateColumnButton createColumn={createColumn} />
         </div>
     );
 }

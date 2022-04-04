@@ -7,13 +7,20 @@ const style = {
     border: 'none',
 };
 
-function CreateColumnButton() {
+interface propTypes {
+    createColumn: Function;
+}
+
+function CreateColumnButton({ createColumn }: propTypes) {
     return (
         <Button
             variant="text"
             startIcon={<AddIcon />}
             style={style}
             disableRipple={false}
+            onClick={() => {
+                createColumn();
+            }}
         >
             Add Column
         </Button>
