@@ -18,7 +18,8 @@ function CreateColumnButton({ createColumn }: propTypes) {
             startIcon={<AddIcon />}
             style={style}
             disableRipple={false}
-            onClick={() => {
+            onClick={(e) => {
+                e.preventDefault();
                 createColumn();
             }}
         >
