@@ -34,13 +34,14 @@ const mockData = {
 function Kanban() {
     const [columns, setColumns] = useState(mockData.columns);
     function createColumn() {}
-    let xs: GridSize = Math.floor(12 / (columns.length + 1));
+    const xs: GridSize = 3;
 
     return (
         <div>
             <Grid container justifyContent="left" spacing={2}>
                 {columns.map((column) => (
                     <SingleColumn
+                        key={column.position}
                         position={column.position}
                         name={column.name}
                         xs={xs}
