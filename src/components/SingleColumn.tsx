@@ -5,7 +5,7 @@ import ColumnHeader from './ColumnHeader';
 interface propTypes {
     position: number;
     xs: GridSize;
-    name: String;
+    name: string;
 }
 
 function SingleColumn({ name, xs }: propTypes) {

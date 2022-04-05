@@ -2,7 +2,7 @@ import { Container } from '@mui/material';
 import React from 'react';
 
 interface propTypes {
-    name: String;
+    name: string;
 }
 
 function ColumnHeader({ name }: propTypes) {
