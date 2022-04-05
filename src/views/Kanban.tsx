@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CreateColumnButton from '../components/CreateColumnButton';
 import SingleColumn from '../components/SingleColumn';
-import Grid from '@mui/material/Grid';
+import Grid, { GridSize } from '@mui/material/Grid';
 
 const mockData = {
     name: 'default',
@@ -34,22 +34,22 @@ const mockData = {
 function Kanban() {
     const [columns, setColumns] = useState(mockData.columns);
     function createColumn() {}
-    const spacing = 2;
+    let xs: GridSize = Math.floor(12 / (columns.length + 1));
+
     return (
         <div>
-            {/* <Grid sx={{ flexGrow: 1 }} container spacing={2}> */}
-            <Grid container justifyContent="left" spacing={spacing}>
+            <Grid container justifyContent="left" spacing={2}>
                 {columns.map((column) => (
                     <SingleColumn
                         position={column.position}
                         name={column.name}
+                        xs={xs}
                     />
                 ))}
-                <Grid key={columns.length} item xs={3}>
+                <Grid key={columns.length} item xs={xs}>
                     <CreateColumnButton createColumn={createColumn} />
                 </Grid>
             </Grid>
-            {/* </Grid> */}
         </div>
     );
 }

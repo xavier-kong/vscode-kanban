@@ -1,15 +1,16 @@
 import React from 'react';
-import Grid from '@mui/material/Grid';
+import Grid, { GridSize } from '@mui/material/Grid';
 import ColumnHeader from './ColumnHeader';
 
 interface propTypes {
     position: Number;
+    xs: GridSize;
     name: String;
 }
 
-function SingleColumn({ position, name }: propTypes) {
+function SingleColumn({ position, name, xs }: propTypes) {
     return (
-        <Grid item xs={3} sx={{ color: '#FFF' }}>
+        <Grid item xs={xs} sx={{ color: '#FFF' }}>
             <ColumnHeader name={name} />
         </Grid>
     );
