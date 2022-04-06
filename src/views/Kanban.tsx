@@ -47,7 +47,7 @@ interface Columns {
 
 function Kanban() {
     const [columns, setColumns] = useState<Columns[]>([]);
-    const xs: GridSize = 4;
+    const xs: GridSize = 6;
 
     function createColumn() {
         const newColumns = [...columns];
@@ -69,11 +69,11 @@ function Kanban() {
         <div>
             <Grid
                 container
-                justifyContent="left"
-                spacing={8}
+                spacing={15}
                 wrap="nowrap"
                 height="100%"
                 width="80%"
+                marginLeft={0}
                 sx={{ overflow: 'auto' }}
             >
                 {columns.map((column) => (
