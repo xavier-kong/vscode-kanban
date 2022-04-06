@@ -59,27 +59,26 @@ function Kanban() {
     }, []);
 
     return (
-        <div>
-            <Grid
-                container
-                spacing={8}
-                wrap="nowrap"
-                marginLeft={0}
-                sx={{ overflow: 'auto' }}
-            >
-                {columns.map((column) => (
-                    <SingleColumn
-                        key={column.position}
-                        position={column.position}
-                        name={column.name}
-                        xs={xs}
-                    />
-                ))}
-                <Grid key={columns.length + 1} item xs={xs}>
-                    <CreateColumnButton createColumn={createColumn} />
-                </Grid>
+        <Grid
+            container
+            spacing={8}
+            wrap="nowrap"
+            marginLeft={0}
+            width="auto"
+            sx={{ overflow: 'auto' }}
+        >
+            {columns.map((column) => (
+                <SingleColumn
+                    key={column.position}
+                    position={column.position}
+                    name={column.name}
+                    xs={xs}
+                />
+            ))}
+            <Grid key={columns.length + 1} item xs={xs}>
+                <CreateColumnButton createColumn={createColumn} />
             </Grid>
-        </div>
+        </Grid>
     );
 }
 
