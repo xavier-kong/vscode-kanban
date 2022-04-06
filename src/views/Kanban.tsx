@@ -28,13 +28,6 @@ const mockData = {
             // color
             tasks: [],
         },
-        // {
-        //     name: 'Waiting',
-        //     default: true,
-        //     position: 3,
-        //     // color
-        //     tasks: [],
-        // },
     ],
 };
 
@@ -47,7 +40,7 @@ interface Columns {
 
 function Kanban() {
     const [columns, setColumns] = useState<Columns[]>([]);
-    const xs: GridSize = 6;
+    const xs: GridSize = 'auto';
 
     function createColumn() {
         const newColumns = [...columns];
@@ -69,10 +62,8 @@ function Kanban() {
         <div>
             <Grid
                 container
-                spacing={15}
+                spacing={8}
                 wrap="nowrap"
-                height="100%"
-                width="80%"
                 marginLeft={0}
                 sx={{ overflow: 'auto' }}
             >
