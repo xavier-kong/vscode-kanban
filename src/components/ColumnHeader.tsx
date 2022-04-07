@@ -3,9 +3,10 @@ import React from 'react';
 
 interface propTypes {
     name: string;
+    status: string;
 }
 
-function ColumnHeader({ name }: propTypes) {
+function ColumnHeader({ name, status }: propTypes) {
     return <Container sx={{ marginTop: '10px' }}>{name}</Container>;
 }
 

@@ -3,15 +3,23 @@ import Grid, { GridSize } from '@mui/material/Grid';
 import ColumnHeader from './ColumnHeader';
 
 interface propTypes {
-    position: number;
     xs: GridSize;
-    name: string;
+    column: Columns;
 }
 
-function SingleColumn({ name, xs }: propTypes) {
+interface Columns {
+    name: string;
+    default: boolean;
+    status: string;
+    position: number;
+    tasks: never[];
+}
+
+function SingleColumn({ column, xs }: propTypes) {
+    const { name, status } = column;
     return (
         <Grid item xs={xs} sx={{ color: '#FFF' }}>
-            <ColumnHeader name={name} />
+            <ColumnHeader name={name} status={status} />
         </Grid>
     );
 }

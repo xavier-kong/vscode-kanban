@@ -11,6 +11,7 @@ const mockData = {
             name: 'To do',
             default: true,
             position: 0,
+            status: 'display',
             // color
             tasks: [],
         },
@@ -18,6 +19,7 @@ const mockData = {
             name: 'Doing',
             default: false,
             position: 1,
+            status: 'display',
             // color
             tasks: [],
         },
@@ -25,6 +27,7 @@ const mockData = {
             name: 'Done',
             default: true,
             position: 2,
+            status: 'display',
             // color
             tasks: [],
         },
@@ -34,6 +37,7 @@ const mockData = {
 interface Columns {
     name: string;
     default: boolean;
+    status: string;
     position: number;
     tasks: never[];
 }
@@ -48,6 +52,7 @@ function Kanban() {
             name: 'Waiting',
             default: true,
             position: columns.length,
+            status: 'new',
             // color
             tasks: [],
         });
@@ -68,12 +73,7 @@ function Kanban() {
             sx={{ overflow: 'auto' }}
         >
             {columns.map((column) => (
-                <SingleColumn
-                    key={column.position}
-                    position={column.position}
-                    name={column.name}
-                    xs={xs}
-                />
+                <SingleColumn key={column.position} column={column} xs={xs} />
             ))}
             <Grid key={columns.length + 1} item xs={xs}>
                 <CreateColumnButton createColumn={createColumn} />
