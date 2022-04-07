@@ -66,7 +66,7 @@ function Kanban() {
     return (
         <Grid
             container
-            spacing={8}
+            spacing={30}
             wrap="nowrap"
             marginLeft={0}
             width="auto"
