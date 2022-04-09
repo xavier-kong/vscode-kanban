@@ -1,11 +1,14 @@
 import React from 'react';
 import Kanban from './views/Kanban';
+import { DragDropContext } from 'react-beautiful-dnd';
+
+function onDragEnd() {}
 
 function App() {
     return (
-        <div>
+        <DragDropContext onDragEnd={onDragEnd}>
             <Kanban />
-        </div>
+        </DragDropContext>
     );
 }
 
