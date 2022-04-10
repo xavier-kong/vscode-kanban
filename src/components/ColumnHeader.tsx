@@ -53,6 +53,7 @@ function ColumnHeader({ name, status }: propTypes) {
                         id="custom-css-outlined-input"
                         variant="standard"
                         autoFocus={true}
+                        inputProps={{ style: { color: 'white' } }}
                     />
                 </Box>
             ) : (
