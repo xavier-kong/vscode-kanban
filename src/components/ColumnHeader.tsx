@@ -15,6 +15,9 @@ const CssTextField = styled(TextField)({
     '& .MuiInput-underline:after': {
         borderBottomColor: 'white',
     },
+    '& .MuiInput-underline:before': {
+        borderBottomColor: 'white',
+    },
     '& .MuiOutlinedInput-root': {
         '& fieldset': {
             borderColor: 'white',
@@ -54,6 +57,9 @@ function ColumnHeader({ name, status }: propTypes) {
                         variant="standard"
                         autoFocus={true}
                         inputProps={{ style: { color: 'white' } }}
+                        InputLabelProps={{
+                            style: { color: '#fff' },
+                        }}
                     />
                 </Box>
             ) : (
