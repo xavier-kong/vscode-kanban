@@ -1,7 +1,8 @@
-import { Container } from '@mui/material';
+import { Container, FormControl } from '@mui/material';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
+import { KeyboardEvent } from 'react';
 
 interface propTypes {
     name: string;
@@ -30,6 +31,13 @@ const CssTextField = styled(TextField)({
         },
     },
 });
+
+const onKeyPress = (event: any) => {
+    if (event.key === 'Enter') {
+        console.log('Input value', event.target.value);
+        event.preventDefault();
+    }
+};
 
 function ColumnHeader({ name, status }: propTypes) {
     /* 
@@ -60,6 +68,7 @@ function ColumnHeader({ name, status }: propTypes) {
                         InputLabelProps={{
                             style: { color: '#fff' },
                         }}
+                        onKeyPress={onKeyPress}
                     />
                 </Box>
             ) : (
