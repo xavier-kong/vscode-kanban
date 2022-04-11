@@ -1,5 +1,6 @@
 import { Container, FormControl } from '@mui/material';
 import Box from '@mui/material/Box';
+import { ClickAwayListener } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { KeyboardEvent } from 'react';
@@ -39,6 +40,10 @@ const onKeyPress = (event: any) => {
     }
 };
 
+const onClickAway = () => {
+    console.log('clicked away');
+};
+
 function ColumnHeader({ name, status }: propTypes) {
     /* 
     if status is new
@@ -59,17 +64,19 @@ function ColumnHeader({ name, status }: propTypes) {
                     noValidate
                     autoComplete="off"
                 >
-                    <CssTextField
-                        label="Enter Column Name"
-                        id="custom-css-outlined-input"
-                        variant="standard"
-                        autoFocus={true}
-                        inputProps={{ style: { color: 'white' } }}
-                        InputLabelProps={{
-                            style: { color: '#fff' },
-                        }}
-                        onKeyPress={onKeyPress}
-                    />
+                    <ClickAwayListener onClickAway={onClickAway}>
+                        <CssTextField
+                            label="Enter Column Name"
+                            id="custom-css-outlined-input"
+                            variant="standard"
+                            autoFocus={true}
+                            inputProps={{ style: { color: 'white' } }}
+                            InputLabelProps={{
+                                style: { color: '#fff' },
+                            }}
+                            onKeyPress={onKeyPress}
+                        />
+                    </ClickAwayListener>
                 </Box>
             ) : (
                 name
