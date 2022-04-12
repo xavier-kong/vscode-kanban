@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import { ClickAwayListener } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
-import { KeyboardEvent } from 'react';
+import { KeyboardEvent, useState } from 'react';
 
 interface propTypes {
     name: string;
@@ -44,7 +44,19 @@ const onClickAway = () => {
     console.log('clicked away');
 };
 
+/* 
+might have to make it a controlled component
+abstract set column name function
+call in both keypress and clickaway
+clean up this mess ugh
+*/
+
 function ColumnHeader({ name, status }: propTypes) {
+    const [input, setInput] = useState('');
+
+    const handleChange = (event: any) => {
+        setInput(event.target.value);
+    };
     /* 
     if status is new
         show a text box
@@ -75,6 +87,8 @@ function ColumnHeader({ name, status }: propTypes) {
                                 style: { color: '#fff' },
                             }}
                             onKeyPress={onKeyPress}
+                            value={input}
+                            onChange={handleChange}
                         />
                     </ClickAwayListener>
                 </Box>
