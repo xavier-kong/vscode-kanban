@@ -33,17 +33,6 @@ const CssTextField = styled(TextField)({
     },
 });
 
-const onKeyPress = (event: any) => {
-    if (event.key === 'Enter') {
-        console.log('Input value', event.target.value);
-        event.preventDefault();
-    }
-};
-
-const onClickAway = () => {
-    console.log('clicked away');
-};
-
 /* 
 might have to make it a controlled component
 abstract set column name function
@@ -56,6 +45,19 @@ function ColumnHeader({ name, status }: propTypes) {
 
     const handleChange = (event: any) => {
         setInput(event.target.value);
+    };
+
+    const setColumnName = () => {};
+
+    const onKeyPress = (event: any) => {
+        if (event.key === 'Enter') {
+            console.log('Input value', event.target.value);
+            event.preventDefault();
+        }
+    };
+
+    const onClickAway = () => {
+        console.log('clicked away');
     };
     /* 
     if status is new
