@@ -47,17 +47,18 @@ function ColumnHeader({ name, status }: propTypes) {
         setInput(event.target.value);
     };
 
-    const setColumnName = () => {};
+    const setColumnName = (input: string) => {};
 
-    const onKeyPress = (event: any) => {
+    const onKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
         if (event.key === 'Enter') {
-            console.log('Input value', event.target.value);
             event.preventDefault();
+            setColumnName(input);
         }
     };
 
-    const onClickAway = () => {
-        console.log('clicked away');
+    const onClickAway = (event: <MouseEvent, TouchEvent>) => {
+        event.preventDefault();
+        setColumnName(input);
     };
     /* 
     if status is new
