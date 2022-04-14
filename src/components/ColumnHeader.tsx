@@ -36,18 +36,14 @@ const CssTextField = styled(TextField)({
 function ColumnHeader({ name, status }: propTypes) {
     const [input, setInput] = useState('');
 
-    const handleChange = (event: any) => {
-        setInput(event.target.value);
-    };
+    function setColumnName(input: string) {}
 
-    const setColumnName = (input: string) => {};
-
-    const onKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    function onKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
+        event.preventDefault();
         if (event.key === 'Enter') {
-            event.preventDefault();
             setColumnName(input);
         }
-    };
+    }
 
     return (
         <Container sx={{ marginTop: '10px' }}>
@@ -69,7 +65,9 @@ function ColumnHeader({ name, status }: propTypes) {
                             }}
                             onKeyPress={onKeyPress}
                             value={input}
-                            onChange={handleChange}
+                            onChange={(event) => {
+                                setInput(event.target.value);
+                            }}
                         />
                     </ClickAwayListener>
                 </Box>
