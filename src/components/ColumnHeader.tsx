@@ -1,9 +1,9 @@
-import { Container, FormControl } from '@mui/material';
+import { Container } from '@mui/material';
 import Box from '@mui/material/Box';
 import { ClickAwayListener } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
-import { KeyboardEvent, useState } from 'react';
+import { useState } from 'react';
 
 interface propTypes {
     name: string;
@@ -33,13 +33,6 @@ const CssTextField = styled(TextField)({
     },
 });
 
-/* 
-might have to make it a controlled component
-abstract set column name function
-call in both keypress and clickaway
-clean up this mess ugh
-*/
-
 function ColumnHeader({ name, status }: propTypes) {
     const [input, setInput] = useState('');
 
@@ -56,30 +49,15 @@ function ColumnHeader({ name, status }: propTypes) {
         }
     };
 
-    const onClickAway = (event: <MouseEvent, TouchEvent>) => {
-        event.preventDefault();
-        setColumnName(input);
-    };
-    /* 
-    if status is new
-        show a text box
-        add listner on click away or enter or click save icon to save name
-        logic to save name
-    */
     return (
         <Container sx={{ marginTop: '10px' }}>
             {status === 'new' ? (
-                <Box
-                    component="form"
-                    // sx={
-                    //     {
-                    //         '& > :not(style)': { m: 1, width: '25ch' },
-                    //     }
-                    // }
-                    noValidate
-                    autoComplete="off"
-                >
-                    <ClickAwayListener onClickAway={onClickAway}>
+                <Box component="form" noValidate autoComplete="off">
+                    <ClickAwayListener
+                        onClickAway={() => {
+                            setColumnName(input);
+                        }}
+                    >
                         <CssTextField
                             label="Enter Column Name"
                             id="custom-css-outlined-input"
