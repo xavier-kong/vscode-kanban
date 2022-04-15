@@ -44,6 +44,7 @@ function ColumnHeader({ name, status }: propTypes) {
             setColumnName(input);
         }
     }
+    // need to prevent user from submitting if input is empty https://stackoverflow.com/questions/43145549/how-react-programmatically-focus-input
 
     return (
         <Container sx={{ marginTop: '10px' }}>

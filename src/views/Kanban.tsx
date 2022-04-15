@@ -47,6 +47,7 @@ function Kanban() {
     const xs: GridSize = 'auto';
 
     function createColumn() {
+        // do not allow if new column exists
         const newColumns = [...columns];
         newColumns.push({
             name: 'Waiting',
@@ -59,7 +60,13 @@ function Kanban() {
         setColumns(newColumns);
     }
 
-    function setColumnName(name: string) {}
+    function setColumnName(name: string) {
+        const newColumns = [...columns];
+        const endIndex = newColumns.length - 1;
+        newColumns[endIndex].name = name;
+        newColumns[endIndex].status = 'display';
+        setColumns(newColumns);
+    }
 
     useEffect(() => {
         setColumns(mockData.columns);
