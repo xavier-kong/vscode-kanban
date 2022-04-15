@@ -59,6 +59,8 @@ function Kanban() {
         setColumns(newColumns);
     }
 
+    function setColumnName(name: string) {}
+
     useEffect(() => {
         setColumns(mockData.columns);
     }, []);

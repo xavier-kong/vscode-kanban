@@ -39,8 +39,8 @@ function ColumnHeader({ name, status }: propTypes) {
     function setColumnName(input: string) {}
 
     function onKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
-        event.preventDefault();
         if (event.key === 'Enter') {
+            event.preventDefault();
             setColumnName(input);
         }
     }
