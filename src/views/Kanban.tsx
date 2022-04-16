@@ -82,7 +82,12 @@ function Kanban() {
             sx={{ overflow: 'auto' }}
         >
             {columns.map((column) => (
-                <SingleColumn key={column.position} column={column} xs={xs} />
+                <SingleColumn
+                    key={column.position}
+                    column={column}
+                    xs={xs}
+                    setColumnName={setColumnName}
+                />
             ))}
             <Grid key={columns.length + 1} item xs={xs}>
                 <CreateColumnButton createColumn={createColumn} />

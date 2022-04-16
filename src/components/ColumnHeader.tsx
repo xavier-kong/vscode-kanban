@@ -8,6 +8,7 @@ import { useState } from 'react';
 interface propTypes {
     name: string;
     status: string;
+    setColumnName: Function;
 }
 
 const CssTextField = styled(TextField)({
@@ -33,10 +34,8 @@ const CssTextField = styled(TextField)({
     },
 });
 
-function ColumnHeader({ name, status }: propTypes) {
+function ColumnHeader({ name, status, setColumnName }: propTypes) {
     const [input, setInput] = useState('');
-
-    function setColumnName(input: string) {}
 
     function onKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === 'Enter') {
@@ -44,7 +43,6 @@ function ColumnHeader({ name, status }: propTypes) {
             setColumnName(input);
         }
     }
-    // need to prevent user from submitting if input is empty https://stackoverflow.com/questions/43145549/how-react-programmatically-focus-input
 
     return (
         <Container sx={{ marginTop: '10px' }}>
@@ -60,7 +58,9 @@ function ColumnHeader({ name, status }: propTypes) {
                             id="custom-css-outlined-input"
                             variant="standard"
                             autoFocus={true}
-                            inputProps={{ style: { color: 'white' } }}
+                            inputProps={{
+                                style: { color: 'white' },
+                            }}
                             InputLabelProps={{
                                 style: { color: '#fff' },
                             }}

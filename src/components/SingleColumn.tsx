@@ -5,6 +5,7 @@ import ColumnHeader from './ColumnHeader';
 interface propTypes {
     xs: GridSize;
     column: Columns;
+    setColumnName: Function;
 }
 
 interface Columns {
@@ -15,11 +16,15 @@ interface Columns {
     tasks: never[];
 }
 
-function SingleColumn({ column, xs }: propTypes) {
+function SingleColumn({ column, xs, setColumnName }: propTypes) {
     const { name, status } = column;
     return (
         <Grid item xs={xs} sx={{ color: '#FFF' }}>
-            <ColumnHeader name={name} status={status} />
+            <ColumnHeader
+                name={name}
+                status={status}
+                setColumnName={setColumnName}
+            />
         </Grid>
     );
 }
