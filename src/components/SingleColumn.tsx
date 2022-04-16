@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import Grid, { GridSize } from '@mui/material/Grid';
 import ColumnHeader from './ColumnHeader';
 
@@ -18,12 +18,21 @@ interface Columns {
 
 function SingleColumn({ column, xs, setColumnName }: propTypes) {
     const { name, status } = column;
+    const [displayIcon, setDisplayIcon] = useState(false);
+
     return (
-        <Grid item xs={xs} sx={{ color: '#FFF' }}>
+        <Grid
+            item
+            xs={xs}
+            sx={{ color: '#FFF' }}
+            onMouseOver={() => setDisplayIcon(true)}
+            onMouseOut={() => setDisplayIcon(false)}
+        >
             <ColumnHeader
                 name={name}
                 status={status}
                 setColumnName={setColumnName}
+                displayIcon={displayIcon}
             />
         </Grid>
     );

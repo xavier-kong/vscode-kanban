@@ -4,11 +4,13 @@ import { ClickAwayListener } from '@mui/material';
 import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 interface propTypes {
     name: string;
     status: string;
     setColumnName: Function;
+    displayIcon: boolean;
 }
 
 const CssTextField = styled(TextField)({
@@ -34,7 +36,7 @@ const CssTextField = styled(TextField)({
     },
 });
 
-function ColumnHeader({ name, status, setColumnName }: propTypes) {
+function ColumnHeader({ name, status, setColumnName, displayIcon }: propTypes) {
     const [input, setInput] = useState('');
 
     function onKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
@@ -73,7 +75,10 @@ function ColumnHeader({ name, status, setColumnName }: propTypes) {
                     </ClickAwayListener>
                 </Box>
             ) : (
-                name
+                <Box>
+                    {name}
+                    <MoreVertIcon />
+                </Box>
             )}
         </Container>
     );
