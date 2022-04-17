@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import { styled } from '@mui/material/styles';
 import { useState } from 'react';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import IconButton from '@mui/material/IconButton';
 
 interface propTypes {
     name: string;
@@ -77,7 +78,11 @@ function ColumnHeader({ name, status, setColumnName, displayIcon }: propTypes) {
             ) : (
                 <Box>
                     {name}
-                    <MoreVertIcon />
+                    {displayIcon ? (
+                        <IconButton aria-label="delete">
+                            <MoreVertIcon />
+                        </IconButton>
+                    ) : null}
                 </Box>
             )}
         </Container>
