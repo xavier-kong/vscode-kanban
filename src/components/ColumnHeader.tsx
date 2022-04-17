@@ -1,8 +1,7 @@
 import { Container } from '@mui/material';
 import Box from '@mui/material/Box';
 import { ClickAwayListener } from '@mui/material';
-import TextField from '@mui/material/TextField';
-import { styled } from '@mui/material/styles';
+import WhiteCssTextField from './WhiteCssTextField';
 import { useState } from 'react';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
@@ -13,29 +12,6 @@ interface propTypes {
     setColumnName: Function;
     displayIcon: boolean;
 }
-
-const CssTextField = styled(TextField)({
-    '& label.Mui-focused': {
-        color: 'white',
-    },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: 'white',
-    },
-    '& .MuiInput-underline:before': {
-        borderBottomColor: 'white',
-    },
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: 'white',
-        },
-        '&:hover fieldset': {
-            borderColor: 'white',
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: 'white',
-        },
-    },
-});
 
 function ColumnHeader({ name, status, setColumnName, displayIcon }: propTypes) {
     const [input, setInput] = useState('');
@@ -56,7 +32,7 @@ function ColumnHeader({ name, status, setColumnName, displayIcon }: propTypes) {
                             setColumnName(input);
                         }}
                     >
-                        <CssTextField
+                        <WhiteCssTextField
                             label="Enter Column Name"
                             id="custom-css-outlined-input"
                             variant="standard"
