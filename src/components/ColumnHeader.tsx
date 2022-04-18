@@ -55,7 +55,7 @@ function ColumnHeader({ name, status, setColumnName, displayIcon }: propTypes) {
                 <Box>
                     {name}
                     {displayIcon ? (
-                        <IconButton aria-label="delete">
+                        <IconButton sx={{ color: '#fff' }}>
                             <MoreVertIcon />
                         </IconButton>
                     ) : null}
