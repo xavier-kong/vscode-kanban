@@ -27,6 +27,7 @@ function SingleColumn({ column, xs, setColumnName }: propTypes) {
             sx={{ color: '#FFF' }}
             onMouseOver={() => setDisplayIcon(true)}
             onMouseOut={() => setDisplayIcon(false)}
+            minWidth="20%"
         >
             <ColumnHeader
                 name={name}

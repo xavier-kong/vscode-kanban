@@ -75,9 +75,9 @@ function Kanban() {
     return (
         <Grid
             container
-            spacing={30}
+            spacing="auto"
             wrap="nowrap"
-            marginLeft={0}
+            marginLeft="auto"
             width="auto"
             sx={{ overflow: 'auto' }}
         >
