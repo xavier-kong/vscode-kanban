@@ -52,10 +52,10 @@ function ColumnHeader({ name, status, setColumnName, displayIcon }: propTypes) {
                     </ClickAwayListener>
                 </Box>
             ) : (
-                <Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     {name}
                     {displayIcon ? (
-                        <IconButton sx={{ color: '#fff' }}>
+                        <IconButton sx={{ color: '#fff' }} size="medium">
                             <MoreVertIcon />
                         </IconButton>
                     ) : null}
