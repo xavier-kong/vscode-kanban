@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Grid, { GridSize } from '@mui/material/Grid';
 import ColumnHeader from './ColumnHeader';
 
-interface propTypes {
+interface PropTypes {
     xs: GridSize;
     column: Columns;
     setColumnName: Function;
@@ -16,7 +16,7 @@ interface Columns {
     tasks: never[];
 }
 
-function SingleColumn({ column, xs, setColumnName }: propTypes) {
+function SingleColumn({ column, xs, setColumnName }: PropTypes) {
     const { name, status } = column;
     const [displayIcon, setDisplayIcon] = useState(false);
 

@@ -5,16 +5,26 @@ import WhiteCssTextField from './WhiteCssTextField';
 import { useState } from 'react';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import IconButton from '@mui/material/IconButton';
+import ColumnHeaderMenu from './ColumnHeaderMenu';
 
-interface propTypes {
+interface PropTypes {
     name: string;
     status: string;
     setColumnName: Function;
     displayIcon: boolean;
 }
 
-function ColumnHeader({ name, status, setColumnName, displayIcon }: propTypes) {
+function ColumnHeader({ name, status, setColumnName, displayIcon }: PropTypes) {
     const [input, setInput] = useState('');
+    const [anchorEl, setAnchorEl] = useState(null);
+
+    const open = Boolean(anchorEl);
+    const handleClick = (event: any) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     function onKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === 'Enter') {
@@ -55,9 +65,23 @@ function ColumnHeader({ name, status, setColumnName, displayIcon }: propTypes) {
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     {name}
                     {displayIcon ? (
-                        <IconButton sx={{ color: '#fff' }} size="medium">
-                            <MoreVertIcon />
-                        </IconButton>
+                        <div>
+                            <IconButton
+                                sx={{ color: '#fff' }}
+                                size="medium"
+                                aria-controls={open ? 'basic-menu' : undefined}
+                                aria-haspopup="true"
+                                aria-expanded={open ? 'true' : undefined}
+                                onClick={handleClick}
+                            >
+                                <MoreVertIcon />
+                            </IconButton>
+                            <ColumnHeaderMenu
+                                anchorEl={anchorEl}
+                                open={open}
+                                handleClose={handleClose}
+                            />
+                        </div>
                     ) : null}
                 </Box>
             )}

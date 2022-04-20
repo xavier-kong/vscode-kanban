@@ -7,11 +7,11 @@ const style = {
     border: 'none',
 };
 
-interface propTypes {
+interface PropTypes {
     createColumn: Function;
 }
 
-function CreateColumnButton({ createColumn }: propTypes) {
+function CreateColumnButton({ createColumn }: PropTypes) {
     return (
         <Button
             variant="text"
