@@ -7,11 +7,12 @@ import Typography from '@mui/material/Typography';
 import ContentCut from '@mui/icons-material/ContentCut';
 import ContentCopy from '@mui/icons-material/ContentCopy';
 import ContentPaste from '@mui/icons-material/ContentPaste';
+import { PopoverProps } from '@mui/material/Popover';
 
 interface PropTypes {
-    anchorEl: any;
-    open: any;
-    handleClose: any;
+    anchorEl: PopoverProps['anchorEl'];
+    open: boolean;
+    handleClose: PopoverProps['onClose'];
 }
 
 function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
