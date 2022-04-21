@@ -16,7 +16,7 @@ interface PropTypes {
 
 function ColumnHeader({ name, status, setColumnName, displayIcon }: PropTypes) {
     const [input, setInput] = useState('');
-    const [anchorEl, setAnchorEl] = useState(null);
+    const [anchorEl, setAnchorEl] = useState<any | null>(null);
 
     const open = Boolean(anchorEl);
     const handleClick = (event: any) => {

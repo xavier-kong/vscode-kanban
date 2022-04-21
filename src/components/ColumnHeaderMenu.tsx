@@ -32,27 +32,18 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
                         <ContentCut fontSize="small" />
                     </ListItemIcon>
                     <ListItemText>Cut</ListItemText>
-                    <Typography variant="body2" color="text.secondary">
-                        ⌘X
-                    </Typography>
                 </MenuItem>
                 <MenuItem>
                     <ListItemIcon>
                         <ContentCopy fontSize="small" />
                     </ListItemIcon>
                     <ListItemText>Copy</ListItemText>
-                    <Typography variant="body2" color="text.secondary">
-                        ⌘C
-                    </Typography>
                 </MenuItem>
                 <MenuItem>
                     <ListItemIcon>
                         <ContentPaste fontSize="small" />
                     </ListItemIcon>
                     <ListItemText>Paste</ListItemText>
-                    <Typography variant="body2" color="text.secondary">
-                        ⌘V
-                    </Typography>
                 </MenuItem>
             </MenuList>
         </Menu>
