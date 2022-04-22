@@ -7,6 +7,7 @@ import ContentCut from '@mui/icons-material/ContentCut';
 import ContentCopy from '@mui/icons-material/ContentCopy';
 import ContentPaste from '@mui/icons-material/ContentPaste';
 import { PopoverProps } from '@mui/material/Popover';
+import { styled } from '@mui/material/styles';
 
 interface PropTypes {
     anchorEl: PopoverProps['anchorEl'];
@@ -14,10 +15,23 @@ interface PropTypes {
     handleClose: PopoverProps['onClose'];
 }
 
+const StyledMenu = styled(Menu)({
+    '.MuiMenu-paper': {
+        backgroundColor: '#1e1e1e',
+    },
+    '.MuiMenu-root': {
+        backgroundColor: '#1e1e1e',
+    },
+    '.MuiMenu-list': {
+        backgroundColor: '#1e1e1e',
+        color: 'white',
+    },
+});
+
 function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
     return (
-        <Menu
-            id="basic-menu"
+        <StyledMenu
+            // id="basic-menu"
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
@@ -28,7 +42,7 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
             <MenuList>
                 <MenuItem>
                     <ListItemIcon>
-                        <ContentCut fontSize="small" />
+                        <ContentCut fontSize="small" color="primary" />
                     </ListItemIcon>
                     <ListItemText>Rename Column</ListItemText>
                 </MenuItem>
@@ -51,7 +65,7 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
                     <ListItemText>Hide Column</ListItemText>
                 </MenuItem>
             </MenuList>
-        </Menu>
+        </StyledMenu>
     );
 }
 
