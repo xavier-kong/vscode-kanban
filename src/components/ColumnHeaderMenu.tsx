@@ -3,11 +3,12 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ContentCut from '@mui/icons-material/ContentCut';
-import ContentCopy from '@mui/icons-material/ContentCopy';
-import ContentPaste from '@mui/icons-material/ContentPaste';
 import { PopoverProps } from '@mui/material/Popover';
 import { styled } from '@mui/material/styles';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+import PaletteIcon from '@mui/icons-material/Palette';
+import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import EditIcon from '@mui/icons-material/Edit';
 
 interface PropTypes {
     anchorEl: PopoverProps['anchorEl'];
@@ -31,7 +32,6 @@ const StyledMenu = styled(Menu)({
 function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
     return (
         <StyledMenu
-            // id="basic-menu"
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
@@ -41,28 +41,28 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
         >
             <MenuList>
                 <MenuItem>
-                    <ListItemIcon>
-                        <ContentCut fontSize="small" color="primary" />
-                    </ListItemIcon>
                     <ListItemText>Rename Column</ListItemText>
+                    <ListItemIcon>
+                        <EditIcon style={{ color: 'white' }} />
+                    </ListItemIcon>
                 </MenuItem>
                 <MenuItem>
-                    <ListItemIcon>
-                        <ContentCopy fontSize="small" />
-                    </ListItemIcon>
                     <ListItemText>Change Colour</ListItemText>
+                    <ListItemIcon>
+                        <PaletteIcon style={{ color: 'white' }} />
+                    </ListItemIcon>
                 </MenuItem>
                 <MenuItem>
-                    <ListItemIcon>
-                        <ContentPaste fontSize="small" />
-                    </ListItemIcon>
                     <ListItemText>Delete Column</ListItemText>
+                    <ListItemIcon>
+                        <DeleteOutlineIcon style={{ color: 'white' }} />
+                    </ListItemIcon>
                 </MenuItem>
                 <MenuItem>
-                    <ListItemIcon>
-                        <ContentPaste fontSize="small" />
-                    </ListItemIcon>
                     <ListItemText>Hide Column</ListItemText>
+                    <ListItemIcon>
+                        <VisibilityOffIcon style={{ color: 'white' }} />
+                    </ListItemIcon>
                 </MenuItem>
             </MenuList>
         </StyledMenu>
