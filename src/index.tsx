@@ -9,5 +9,3 @@ ReactDOM.render(
     </React.StrictMode>,
     document.getElementById('root')
 );
-
-// To the BC team: C'est en faisant n'importe quoi qu'on devient n'importe qui
