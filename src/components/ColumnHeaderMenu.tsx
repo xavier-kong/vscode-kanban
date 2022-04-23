@@ -41,25 +41,33 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
         >
             <MenuList>
                 <MenuItem>
-                    <ListItemText>Rename Column</ListItemText>
+                    <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
+                        Rename
+                    </ListItemText>
                     <ListItemIcon>
                         <EditIcon style={{ color: 'white' }} />
                     </ListItemIcon>
                 </MenuItem>
                 <MenuItem>
-                    <ListItemText>Change Colour</ListItemText>
+                    <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
+                        Colour
+                    </ListItemText>
                     <ListItemIcon>
                         <PaletteIcon style={{ color: 'white' }} />
                     </ListItemIcon>
                 </MenuItem>
                 <MenuItem>
-                    <ListItemText>Delete Column</ListItemText>
+                    <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
+                        Delete
+                    </ListItemText>
                     <ListItemIcon>
                         <DeleteOutlineIcon style={{ color: 'white' }} />
                     </ListItemIcon>
                 </MenuItem>
                 <MenuItem>
-                    <ListItemText>Hide Column</ListItemText>
+                    <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
+                        Hide
+                    </ListItemText>
                     <ListItemIcon>
                         <VisibilityOffIcon style={{ color: 'white' }} />
                     </ListItemIcon>
