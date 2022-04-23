@@ -19,6 +19,8 @@ interface PropTypes {
 const StyledMenu = styled(Menu)({
     '.MuiMenu-paper': {
         backgroundColor: '#1e1e1e',
+        width: '20%',
+        maxWidth: '100%',
     },
     '.MuiMenu-root': {
         backgroundColor: '#1e1e1e',
