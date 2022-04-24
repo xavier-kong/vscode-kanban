@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import { ClickAwayListener } from '@mui/material';
 import WhiteCssTextField from './WhiteCssTextField';
 import { useState } from 'react';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import IconButton from '@mui/material/IconButton';
 import ColumnHeaderMenu from './ColumnHeaderMenu';
 
@@ -74,7 +74,7 @@ function ColumnHeader({ name, status, setColumnName, displayIcon }: PropTypes) {
                                 aria-expanded={open ? 'true' : undefined}
                                 onClick={handleClick}
                             >
-                                <MoreVertIcon />
+                                <MoreHorizIcon />
                             </IconButton>
                             <ColumnHeaderMenu
                                 anchorEl={anchorEl}
