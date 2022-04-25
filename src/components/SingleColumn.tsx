@@ -17,7 +17,7 @@ interface Columns {
 }
 
 function SingleColumn({ column, xs, setColumnName }: PropTypes) {
-    const { name, status } = column;
+    const { name, status, position } = column;
     const [displayIcon, setDisplayIcon] = useState(false);
 
     return (
@@ -32,6 +32,7 @@ function SingleColumn({ column, xs, setColumnName }: PropTypes) {
             <ColumnHeader
                 name={name}
                 status={status}
+                position={position}
                 setColumnName={setColumnName}
                 displayIcon={displayIcon}
             />

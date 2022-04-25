@@ -12,9 +12,16 @@ interface PropTypes {
     status: string;
     setColumnName: Function;
     displayIcon: boolean;
+    position: number;
 }
 
-function ColumnHeader({ name, status, setColumnName, displayIcon }: PropTypes) {
+function ColumnHeader({
+    name,
+    status,
+    position,
+    setColumnName,
+    displayIcon,
+}: PropTypes) {
     const [input, setInput] = useState('');
     const [anchorEl, setAnchorEl] = useState<any | null>(null);
 
@@ -29,7 +36,7 @@ function ColumnHeader({ name, status, setColumnName, displayIcon }: PropTypes) {
     function onKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === 'Enter') {
             event.preventDefault();
-            setColumnName(input);
+            setColumnName(input, position);
         }
     }
 

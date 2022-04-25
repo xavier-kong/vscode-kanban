@@ -60,11 +60,13 @@ function Kanban() {
         setColumns(newColumns);
     }
 
-    function setColumnName(name: string) {
+    function setColumnName(name: string, position: number) {
         const newColumns = [...columns];
-        const endIndex = newColumns.length - 1;
-        newColumns[endIndex].name = name;
-        newColumns[endIndex].status = 'display';
+        const columnIndex = newColumns.findIndex(
+            (element) => (element.position = position)
+        );
+        newColumns[columnIndex].name = name;
+        newColumns[columnIndex].status = 'display';
         setColumns(newColumns);
     }
 
