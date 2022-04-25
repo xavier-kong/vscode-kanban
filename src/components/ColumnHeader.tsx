@@ -46,7 +46,7 @@ function ColumnHeader({
                 <Box component="form" noValidate autoComplete="off">
                     <ClickAwayListener
                         onClickAway={() => {
-                            setColumnName(input);
+                            setColumnName(input, position);
                         }}
                     >
                         <WhiteCssTextField

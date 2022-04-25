@@ -63,7 +63,7 @@ function Kanban() {
     function setColumnName(name: string, position: number) {
         const newColumns = [...columns];
         const columnIndex = newColumns.findIndex(
-            (element) => (element.position = position)
+            (element) => element.position === position
         );
         newColumns[columnIndex].name = name;
         newColumns[columnIndex].status = 'display';
