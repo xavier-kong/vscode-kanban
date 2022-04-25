@@ -32,6 +32,11 @@ const StyledMenu = styled(Menu)({
 });
 
 function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
+    function handleColumnRename() {}
+    function handleColumnColorChange() {}
+    function handleColumnDelete() {}
+    function handleColumnHide() {}
+
     return (
         <StyledMenu
             anchorEl={anchorEl}
@@ -42,7 +47,11 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
             }}
         >
             <MenuList>
-                <MenuItem>
+                <MenuItem
+                    onClick={(e) => {
+                        handleColumnRename();
+                    }}
+                >
                     <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
                         Rename
                     </ListItemText>
@@ -50,7 +59,11 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
                         <EditIcon style={{ color: 'white' }} />
                     </ListItemIcon>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem
+                    onClick={(e) => {
+                        handleColumnColorChange();
+                    }}
+                >
                     <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
                         Colour
                     </ListItemText>
@@ -58,7 +71,11 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
                         <PaletteIcon style={{ color: 'white' }} />
                     </ListItemIcon>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem
+                    onClick={(e) => {
+                        handleColumnDelete();
+                    }}
+                >
                     <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
                         Delete
                     </ListItemText>
@@ -66,7 +83,11 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
                         <DeleteOutlineIcon style={{ color: 'white' }} />
                     </ListItemIcon>
                 </MenuItem>
-                <MenuItem>
+                <MenuItem
+                    onClick={(e) => {
+                        handleColumnHide();
+                    }}
+                >
                     <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
                         Hide
                     </ListItemText>
