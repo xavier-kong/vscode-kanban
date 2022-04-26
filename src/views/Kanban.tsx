@@ -46,18 +46,24 @@ function Kanban() {
     const [columns, setColumns] = useState<Columns[]>([]);
     const xs: GridSize = 'auto';
 
+    useEffect(() => {
+        setColumns(mockData.columns);
+    }, []);
+
     function createColumn() {
         // do not allow if new column exists
-        const newColumns = [...columns];
-        newColumns.push({
-            name: 'Waiting',
-            default: true,
-            position: columns.length,
-            status: 'new',
-            // color
-            tasks: [],
-        });
-        setColumns(newColumns);
+        if (!columns.some((column) => column.status === 'new')) {
+            const newColumns = [...columns];
+            newColumns.push({
+                name: 'Waiting',
+                default: true,
+                position: columns.length,
+                status: 'new',
+                // color
+                tasks: [],
+            });
+            setColumns(newColumns);
+        }
     }
 
     function setColumnName(name: string, position: number) {
@@ -70,9 +76,7 @@ function Kanban() {
         setColumns(newColumns);
     }
 
-    useEffect(() => {
-        setColumns(mockData.columns);
-    }, []);
+    function setColumnStatus(statu: string, position: number) {}
 
     return (
         <Grid
