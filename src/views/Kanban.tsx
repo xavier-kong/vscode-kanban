@@ -87,6 +87,13 @@ function Kanban() {
         setColumns(newColumns);
     }
 
+    function deleteColumn(position: number) {
+        const newColumns = columns.filter(
+            (column) => column.position !== position
+        );
+        setColumns(newColumns);
+    }
+
     return (
         <Grid
             container
