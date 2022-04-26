@@ -6,7 +6,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import { PopoverProps } from '@mui/material/Popover';
 import { styled } from '@mui/material/styles';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
-import PaletteIcon from '@mui/icons-material/Palette';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -33,7 +32,6 @@ const StyledMenu = styled(Menu)({
 
 function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
     function handleColumnRename() {}
-    function handleColumnColorChange() {}
     function handleColumnDelete() {}
     function handleColumnHide() {}
 
@@ -57,18 +55,6 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
                     </ListItemText>
                     <ListItemIcon>
                         <EditIcon style={{ color: 'white' }} />
-                    </ListItemIcon>
-                </MenuItem>
-                <MenuItem
-                    onClick={(e) => {
-                        handleColumnColorChange();
-                    }}
-                >
-                    <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
-                        Colour
-                    </ListItemText>
-                    <ListItemIcon>
-                        <PaletteIcon style={{ color: 'white' }} />
                     </ListItemIcon>
                 </MenuItem>
                 <MenuItem
