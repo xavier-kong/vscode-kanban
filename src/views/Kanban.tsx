@@ -78,7 +78,14 @@ function Kanban() {
         }
     }
 
-    function setColumnStatus(statu: string, position: number) {}
+    function setColumnStatus(status: string, position: number) {
+        const newColumns = [...columns];
+        const columnIndex = newColumns.findIndex(
+            (element) => element.position === position
+        );
+        newColumns[columnIndex].status = status;
+        setColumns(newColumns);
+    }
 
     return (
         <Grid
