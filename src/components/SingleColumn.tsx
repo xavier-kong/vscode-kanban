@@ -7,6 +7,7 @@ interface PropTypes {
     column: Columns;
     setColumnName: Function;
     deleteColumn: Function;
+    setColumnStatus: Function;
 }
 
 interface Columns {
@@ -17,7 +18,13 @@ interface Columns {
     tasks: never[];
 }
 
-function SingleColumn({ column, xs, setColumnName, deleteColumn }: PropTypes) {
+function SingleColumn({
+    column,
+    xs,
+    setColumnName,
+    deleteColumn,
+    setColumnStatus,
+}: PropTypes) {
     const { name, status, position } = column;
     const [displayIcon, setDisplayIcon] = useState(false);
 
@@ -36,6 +43,7 @@ function SingleColumn({ column, xs, setColumnName, deleteColumn }: PropTypes) {
                 position={position}
                 setColumnName={setColumnName}
                 deleteColumn={deleteColumn}
+                setColumnStatus={setColumnStatus}
                 displayIcon={displayIcon}
             />
         </Grid>

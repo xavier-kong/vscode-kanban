@@ -14,6 +14,7 @@ interface PropTypes {
     open: boolean;
     handleClose: PopoverProps['onClose'];
     deleteColumn: Function;
+    setColumnStatus: Function;
     position: number;
 }
 
@@ -37,13 +38,16 @@ function ColumnHeaderMenu({
     open,
     handleClose,
     deleteColumn,
+    setColumnStatus,
     position,
 }: PropTypes) {
     function handleColumnRename() {}
     function handleColumnDelete() {
         deleteColumn(position);
     }
-    function handleColumnHide() {}
+    function handleColumnHide() {
+        setColumnStatus('hide', position);
+    }
 
     return (
         <StyledMenu

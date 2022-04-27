@@ -102,15 +102,18 @@ function Kanban() {
             width="auto"
             sx={{ overflow: 'auto' }}
         >
-            {columns.map((column) => (
-                <SingleColumn
-                    key={column.position}
-                    column={column}
-                    xs={xs}
-                    setColumnName={setColumnName}
-                    deleteColumn={deleteColumn}
-                />
-            ))}
+            {columns
+                .filter((column) => column.status === 'display')
+                .map((column) => (
+                    <SingleColumn
+                        key={column.position}
+                        column={column}
+                        xs={xs}
+                        setColumnName={setColumnName}
+                        deleteColumn={deleteColumn}
+                        setColumnStatus={setColumnStatus}
+                    />
+                ))}
             <Grid key={columns.length + 1} item xs={xs}>
                 <CreateColumnButton createColumn={createColumn} />
             </Grid>
