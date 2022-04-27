@@ -51,7 +51,6 @@ function Kanban() {
     }, []);
 
     function createColumn() {
-        // do not allow if new column exists
         if (!columns.some((column) => column.status === 'new')) {
             const newColumns = [...columns];
             newColumns.push({
@@ -109,6 +108,7 @@ function Kanban() {
                     column={column}
                     xs={xs}
                     setColumnName={setColumnName}
+                    deleteColumn={deleteColumn}
                 />
             ))}
             <Grid key={columns.length + 1} item xs={xs}>

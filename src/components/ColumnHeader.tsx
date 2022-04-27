@@ -11,6 +11,7 @@ interface PropTypes {
     name: string;
     status: string;
     setColumnName: Function;
+    deleteColumn: Function;
     displayIcon: boolean;
     position: number;
 }
@@ -21,6 +22,7 @@ function ColumnHeader({
     position,
     setColumnName,
     displayIcon,
+    deleteColumn,
 }: PropTypes) {
     const [input, setInput] = useState('');
     const [anchorEl, setAnchorEl] = useState<any | null>(null);
@@ -87,6 +89,8 @@ function ColumnHeader({
                                 anchorEl={anchorEl}
                                 open={open}
                                 handleClose={handleClose}
+                                deleteColumn={deleteColumn}
+                                position={position}
                             />
                         </div>
                     ) : null}

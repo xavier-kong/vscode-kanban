@@ -13,6 +13,8 @@ interface PropTypes {
     anchorEl: PopoverProps['anchorEl'];
     open: boolean;
     handleClose: PopoverProps['onClose'];
+    deleteColumn: Function;
+    position: number;
 }
 
 const StyledMenu = styled(Menu)({
@@ -30,9 +32,17 @@ const StyledMenu = styled(Menu)({
     },
 });
 
-function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
+function ColumnHeaderMenu({
+    anchorEl,
+    open,
+    handleClose,
+    deleteColumn,
+    position,
+}: PropTypes) {
     function handleColumnRename() {}
-    function handleColumnDelete() {}
+    function handleColumnDelete() {
+        deleteColumn(position);
+    }
     function handleColumnHide() {}
 
     return (
@@ -47,6 +57,7 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
             <MenuList>
                 <MenuItem
                     onClick={(e) => {
+                        e.preventDefault();
                         handleColumnRename();
                     }}
                 >
@@ -59,6 +70,7 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
                 </MenuItem>
                 <MenuItem
                     onClick={(e) => {
+                        e.preventDefault();
                         handleColumnDelete();
                     }}
                 >
@@ -71,6 +83,7 @@ function ColumnHeaderMenu({ anchorEl, open, handleClose }: PropTypes) {
                 </MenuItem>
                 <MenuItem
                     onClick={(e) => {
+                        e.preventDefault();
                         handleColumnHide();
                     }}
                 >
