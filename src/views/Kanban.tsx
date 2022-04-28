@@ -37,7 +37,7 @@ const mockData = {
 interface Columns {
     name: string;
     default: boolean;
-    status: 'display' | 'new' | 'rename';
+    status: 'display' | 'new' | 'rename' | 'hide';
     position: number;
     tasks: never[];
 }
@@ -61,6 +61,7 @@ function Kanban() {
                 // color
                 tasks: [],
             });
+
             setColumns(newColumns);
         }
     }
@@ -106,7 +107,12 @@ function Kanban() {
             sx={{ overflow: 'auto' }}
         >
             {columns
-                .filter((column) => column.status === 'display')
+                .filter(
+                    (column) =>
+                        column.status === 'display' ||
+                        column.status === 'new' ||
+                        column.status === 'rename'
+                )
                 .map((column) => (
                     <SingleColumn
                         key={column.position}

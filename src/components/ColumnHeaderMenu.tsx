@@ -41,7 +41,9 @@ function ColumnHeaderMenu({
     setColumnStatus,
     position,
 }: PropTypes) {
-    function handleColumnRename() {}
+    function handleColumnRename() {
+        setColumnStatus('rename', position);
+    }
     function handleColumnDelete() {
         deleteColumn(position);
     }
