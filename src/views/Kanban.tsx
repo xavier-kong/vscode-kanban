@@ -37,7 +37,7 @@ const mockData = {
 interface Columns {
     name: string;
     default: boolean;
-    status: string;
+    status: 'display' | 'new' | 'rename';
     position: number;
     tasks: never[];
 }
@@ -47,7 +47,7 @@ function Kanban() {
     const xs: GridSize = 'auto';
 
     useEffect(() => {
-        setColumns(mockData.columns);
+        setColumns(mockData.columns as Columns[]);
     }, []);
 
     function createColumn() {
@@ -77,7 +77,10 @@ function Kanban() {
         }
     }
 
-    function setColumnStatus(status: string, position: number) {
+    function setColumnStatus(
+        status: 'display' | 'new' | 'rename',
+        position: number
+    ) {
         const newColumns = [...columns];
         const columnIndex = newColumns.findIndex(
             (element) => element.position === position
