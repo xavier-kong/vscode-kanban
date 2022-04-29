@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import CreateColumnButton from '../components/CreateColumnButton';
 import SingleColumn from '../components/SingleColumn';
+import HiddenColumns from '../components/HiddenColumns';
 import Grid, { GridSize } from '@mui/material/Grid';
 
 const mockData = {
@@ -34,7 +35,7 @@ const mockData = {
     ],
 };
 
-interface Columns {
+interface Column {
     name: string;
     default: boolean;
     status: 'display' | 'new' | 'rename' | 'hide';
@@ -43,11 +44,11 @@ interface Columns {
 }
 
 function Kanban() {
-    const [columns, setColumns] = useState<Columns[]>([]);
+    const [columns, setColumns] = useState<Column[]>([]);
     const xs: GridSize = 'auto';
 
     useEffect(() => {
-        setColumns(mockData.columns as Columns[]);
+        setColumns(mockData.columns as Column[]);
     }, []);
 
     function createColumn() {
@@ -125,6 +126,13 @@ function Kanban() {
                 ))}
             <Grid key={columns.length + 1} item xs={xs}>
                 <CreateColumnButton createColumn={createColumn} />
+            </Grid>
+            <Grid key={columns.length + 2} item xs={xs}>
+                <HiddenColumns
+                    columns={columns.filter(
+                        (column) => column.status === 'hide'
+                    )}
+                />
             </Grid>
         </Grid>
     );
