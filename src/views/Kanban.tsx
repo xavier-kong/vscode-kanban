@@ -126,8 +126,6 @@ function Kanban() {
                 ))}
             <Grid key={columns.length + 1} item xs={xs}>
                 <CreateColumnButton createColumn={createColumn} />
-            </Grid>
-            <Grid key={columns.length + 2} item xs={xs}>
                 <HiddenColumns
                     columns={columns.filter(
                         (column) => column.status === 'hide'
