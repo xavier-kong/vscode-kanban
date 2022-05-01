@@ -43,18 +43,6 @@ function HiddenColumns({ columns }: PropTypes) {
             >
                 Hidden Columns
             </Button>
-            <Button
-                variant="text"
-                // startIcon={<AddIcon />}
-                style={style}
-                disableRipple={false}
-                onClick={(e) => {
-                    e.preventDefault();
-                    // createColumn();
-                }}
-            >
-                Add Column
-            </Button>
             <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
