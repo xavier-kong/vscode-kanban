@@ -46,7 +46,7 @@ function HiddenColumns({ columns }: PropTypes) {
             <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
-                open={open}
+                open={columns.length > 0 ? open : false}
                 onClose={handleClose}
                 MenuListProps={{
                     'aria-labelledby': 'basic-button',
