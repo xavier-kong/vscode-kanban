@@ -52,9 +52,11 @@ function HiddenColumns({ columns }: PropTypes) {
                     'aria-labelledby': 'basic-button',
                 }}
             >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleClose}>Logout</MenuItem>
+                {columns.map((column) => {
+                    return (
+                        <MenuItem key={column.position}>{column.name}</MenuItem>
+                    );
+                })}
             </Menu>
         </Container>
     );
