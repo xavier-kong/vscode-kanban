@@ -1,13 +1,12 @@
-import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { PopoverProps } from '@mui/material/Popover';
-import { styled } from '@mui/material/styles';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import EditIcon from '@mui/icons-material/Edit';
+import DarkStyledMenu from './DarkStyledMenu';
 
 interface PropTypes {
     anchorEl: PopoverProps['anchorEl'];
@@ -17,21 +16,6 @@ interface PropTypes {
     setColumnStatus: Function;
     position: number;
 }
-
-const StyledMenu = styled(Menu)({
-    '.MuiMenu-paper': {
-        backgroundColor: '#1e1e1e',
-        width: '20%',
-        maxWidth: '200px',
-    },
-    '.MuiMenu-root': {
-        backgroundColor: '#1e1e1e',
-    },
-    '.MuiMenu-list': {
-        backgroundColor: '#1e1e1e',
-        color: 'white',
-    },
-});
 
 function ColumnHeaderMenu({
     anchorEl,
@@ -52,7 +36,7 @@ function ColumnHeaderMenu({
     }
 
     return (
-        <StyledMenu
+        <DarkStyledMenu
             anchorEl={anchorEl}
             open={open}
             onClose={handleClose}
@@ -101,7 +85,7 @@ function ColumnHeaderMenu({
                     </ListItemIcon>
                 </MenuItem>
             </MenuList>
-        </StyledMenu>
+        </DarkStyledMenu>
     );
 }
 
