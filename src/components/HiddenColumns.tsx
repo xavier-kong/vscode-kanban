@@ -3,6 +3,9 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import DarkStyledMenu from './DarkStyledMenu';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import VisibilityIcon from '@mui/icons-material/Visibility';
 
 interface Column {
     name: string;
@@ -54,7 +57,16 @@ function HiddenColumns({ columns }: PropTypes) {
             >
                 {columns.map((column) => {
                     return (
-                        <MenuItem key={column.position}>{column.name}</MenuItem>
+                        <MenuItem key={column.position}>
+                            <ListItemText
+                                primaryTypographyProps={{ variant: 'body2' }}
+                            >
+                                {column.name}
+                            </ListItemText>
+                            <ListItemIcon>
+                                <VisibilityIcon style={{ color: 'white' }} />
+                            </ListItemIcon>
+                        </MenuItem>
                     );
                 })}
             </DarkStyledMenu>
