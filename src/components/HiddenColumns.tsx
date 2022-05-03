@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import DarkStyledMenu from './DarkStyledMenu';
 
 interface Column {
     name: string;
@@ -43,7 +43,7 @@ function HiddenColumns({ columns }: PropTypes) {
             >
                 Hidden Columns
             </Button>
-            <Menu
+            <DarkStyledMenu
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={columns.length > 0 ? open : false}
@@ -57,7 +57,7 @@ function HiddenColumns({ columns }: PropTypes) {
                         <MenuItem key={column.position}>{column.name}</MenuItem>
                     );
                 })}
-            </Menu>
+            </DarkStyledMenu>
         </Container>
     );
 }
