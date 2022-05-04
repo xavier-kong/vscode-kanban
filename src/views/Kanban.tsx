@@ -13,7 +13,6 @@ const mockData = {
             default: true,
             position: 0,
             status: 'display',
-            // color
             tasks: [],
         },
         {
@@ -21,7 +20,6 @@ const mockData = {
             default: false,
             position: 1,
             status: 'display',
-            // color
             tasks: [],
         },
         {
@@ -29,7 +27,6 @@ const mockData = {
             default: true,
             position: 2,
             status: 'display',
-            // color
             tasks: [],
         },
     ],
