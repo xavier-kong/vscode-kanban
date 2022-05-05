@@ -37,7 +37,7 @@ function HiddenColumns({ columns }: PropTypes) {
 
     return (
         <Container>
-            <Box sx={{ border: 1, borderColor: 'white' }}>
+            <Box sx={{ border: 0.1, borderColor: 'white', borderRadius: '5%' }}>
                 <Button
                     id="basic-button"
                     aria-controls={open ? 'basic-menu' : undefined}
