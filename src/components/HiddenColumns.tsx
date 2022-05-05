@@ -6,6 +6,7 @@ import DarkStyledMenu from './DarkStyledMenu';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import Box from '@mui/material/Box';
 
 interface Column {
     name: string;
@@ -36,16 +37,18 @@ function HiddenColumns({ columns }: PropTypes) {
 
     return (
         <Container>
-            <Button
-                id="basic-button"
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-                style={style}
-            >
-                Hidden Columns
-            </Button>
+            <Box sx={{ border: 1, borderColor: 'white' }}>
+                <Button
+                    id="basic-button"
+                    aria-controls={open ? 'basic-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}
+                    style={style}
+                >
+                    Hidden Columns
+                </Button>
+            </Box>
             <DarkStyledMenu
                 id="basic-menu"
                 anchorEl={anchorEl}

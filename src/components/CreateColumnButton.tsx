@@ -1,4 +1,5 @@
 import React from 'react';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 
@@ -13,18 +14,21 @@ interface PropTypes {
 
 function CreateColumnButton({ createColumn }: PropTypes) {
     return (
-        <Button
-            variant="text"
-            startIcon={<AddIcon />}
-            style={style}
-            disableRipple={false}
-            onClick={(e) => {
-                e.preventDefault();
-                createColumn();
-            }}
-        >
-            Add Column
-        </Button>
+        <Box sx={{ border: 1, borderColor: 'white' }}>
+            <Button
+                variant="text"
+                startIcon={<AddIcon />}
+                style={style}
+                disableRipple={false}
+                onClick={(e) => {
+                    e.preventDefault();
+                    createColumn();
+                }}
+                sx={{ border: 1, borderColor: 'white' }}
+            >
+                Add Column
+            </Button>
+        </Box>
     );
 }
 
