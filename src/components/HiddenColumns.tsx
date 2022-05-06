@@ -7,17 +7,10 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import Box from '@mui/material/Box';
-
-interface Column {
-    name: string;
-    default: boolean;
-    status: 'display' | 'new' | 'rename' | 'hide';
-    position: number;
-    tasks: never[];
-}
+import Columns from '../types/Columns';
 
 interface PropTypes {
-    columns: Column[];
+    columns: Columns[];
 }
 
 const style = {

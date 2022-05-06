@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Grid, { GridSize } from '@mui/material/Grid';
 import ColumnHeader from './ColumnHeader';
+import Columns from '../types/Columns';
 
 interface PropTypes {
     xs: GridSize;
@@ -8,14 +9,6 @@ interface PropTypes {
     setColumnName: Function;
     deleteColumn: Function;
     setColumnStatus: Function;
-}
-
-interface Columns {
-    name: string;
-    default: boolean;
-    status: string;
-    position: number;
-    tasks: never[];
 }
 
 function SingleColumn({

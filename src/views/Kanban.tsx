@@ -3,6 +3,7 @@ import CreateColumnButton from '../components/CreateColumnButton';
 import SingleColumn from '../components/SingleColumn';
 import HiddenColumns from '../components/HiddenColumns';
 import Grid, { GridSize } from '@mui/material/Grid';
+import Columns from '../types/Columns';
 
 const mockData = {
     name: 'default',
@@ -32,20 +33,12 @@ const mockData = {
     ],
 };
 
-interface Column {
-    name: string;
-    default: boolean;
-    status: 'display' | 'new' | 'rename' | 'hide';
-    position: number;
-    tasks: never[];
-}
-
 function Kanban() {
-    const [columns, setColumns] = useState<Column[]>([]);
+    const [columns, setColumns] = useState<Columns[]>([]);
     const xs: GridSize = 'auto';
 
     useEffect(() => {
-        setColumns(mockData.columns as Column[]);
+        setColumns(mockData.columns as Columns[]);
     }, []);
 
     function createColumn() {

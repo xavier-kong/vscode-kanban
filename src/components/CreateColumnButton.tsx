@@ -16,7 +16,13 @@ interface PropTypes {
 function CreateColumnButton({ createColumn }: PropTypes) {
     return (
         <Container sx={{ marginTop: '10px', marginBottom: '20px' }}>
-            <Box sx={{ border: 0.1, borderColor: 'white', borderRadius: '5%' }}>
+            <Box
+                sx={{
+                    border: '1px solid',
+                    borderColor: 'white',
+                    borderRadius: '5%',
+                }}
+            >
                 <Button
                     variant="text"
                     startIcon={<AddIcon />}
