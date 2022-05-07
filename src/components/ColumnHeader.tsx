@@ -1,4 +1,4 @@
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import { ClickAwayListener } from '@mui/material';
 import WhiteCssTextField from './WhiteCssTextField';
@@ -74,7 +74,7 @@ function ColumnHeader({
                 </Box>
             ) : (
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    {name}
+                    <Typography sx={{ marginTop: '5%' }}>{name}</Typography>
                     {displayIcon ? (
                         <div>
                             <IconButton
