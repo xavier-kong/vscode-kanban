@@ -6,6 +6,7 @@ import { useState } from 'react';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import IconButton from '@mui/material/IconButton';
 import ColumnHeaderMenu from './ColumnHeaderMenu';
+import { EndOfLineState } from 'typescript';
 
 interface PropTypes {
     name: string;
@@ -28,8 +29,10 @@ function ColumnHeader({
 }: PropTypes) {
     const [input, setInput] = useState('');
     const [anchorEl, setAnchorEl] = useState<any | null>(null);
+    const [inputError, setInputError] = useState(false);
 
     const open = Boolean(anchorEl);
+
     const handleClick = (event: any) => {
         setAnchorEl(event.currentTarget);
     };
@@ -37,9 +40,16 @@ function ColumnHeader({
         setAnchorEl(null);
     };
 
+    function checkForInputError() {
+        if (input === '' || input === ' ') {
+            setInputError(true);
+        }
+    }
+
     function onKeyPress(event: React.KeyboardEvent<HTMLInputElement>) {
         if (event.key === 'Enter') {
             event.preventDefault();
+            checkForInputError();
             setColumnName(input, position);
         }
     }
@@ -50,6 +60,7 @@ function ColumnHeader({
                 <Box component="form" noValidate autoComplete="off">
                     <ClickAwayListener
                         onClickAway={() => {
+                            checkForInputError();
                             setColumnName(input, position);
                         }}
                     >
