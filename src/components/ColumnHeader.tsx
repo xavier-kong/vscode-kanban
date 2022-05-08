@@ -6,7 +6,6 @@ import { useState } from 'react';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import IconButton from '@mui/material/IconButton';
 import ColumnHeaderMenu from './ColumnHeaderMenu';
-import { EndOfLineState } from 'typescript';
 
 interface PropTypes {
     name: string;
@@ -64,23 +63,45 @@ function ColumnHeader({
                             setColumnName(input, position);
                         }}
                     >
-                        <WhiteCssTextField
-                            label="Enter Column Name"
-                            id="custom-css-outlined-input"
-                            variant="standard"
-                            autoFocus={true}
-                            inputProps={{
-                                style: { color: 'white' },
-                            }}
-                            InputLabelProps={{
-                                style: { color: '#fff' },
-                            }}
-                            onKeyPress={onKeyPress}
-                            value={input}
-                            onChange={(event) => {
-                                setInput(event.target.value);
-                            }}
-                        />
+                        {inputError ? (
+                            <WhiteCssTextField
+                                error
+                                label="Enter Column Name"
+                                id="custom-css-outlined-input"
+                                variant="standard"
+                                autoFocus={true}
+                                inputProps={{
+                                    style: { color: 'white' },
+                                }}
+                                InputLabelProps={{
+                                    style: { color: '#fff' },
+                                }}
+                                onKeyPress={onKeyPress}
+                                value={input}
+                                onChange={(event) => {
+                                    setInput(event.target.value);
+                                }}
+                                helperText="Please enter a valid name."
+                            />
+                        ) : (
+                            <WhiteCssTextField
+                                label="Enter Column Name"
+                                id="custom-css-outlined-input"
+                                variant="standard"
+                                autoFocus={true}
+                                inputProps={{
+                                    style: { color: 'white' },
+                                }}
+                                InputLabelProps={{
+                                    style: { color: '#fff' },
+                                }}
+                                onKeyPress={onKeyPress}
+                                value={input}
+                                onChange={(event) => {
+                                    setInput(event.target.value);
+                                }}
+                            />
+                        )}
                     </ClickAwayListener>
                 </Box>
             ) : (
