@@ -42,6 +42,8 @@ function ColumnHeader({
     function checkForInputError() {
         if (input === '' || input === ' ') {
             setInputError(true);
+        } else {
+            setInputError(false);
         }
     }
 
