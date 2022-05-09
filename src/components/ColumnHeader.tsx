@@ -56,7 +56,13 @@ function ColumnHeader({
     }
 
     return (
-        <Container sx={{ marginTop: '10px' }}>
+        <Container
+            sx={{
+                marginTop: '10px',
+                borderBottom: '1px solid',
+                borderColor: 'white',
+            }}
+        >
             {status === 'new' || status === 'rename' ? (
                 <Box component="form" noValidate autoComplete="off">
                     <ClickAwayListener
