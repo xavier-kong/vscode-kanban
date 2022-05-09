@@ -91,7 +91,7 @@ function Kanban() {
     return (
         <Grid
             container
-            spacing="auto"
+            spacing="3%"
             wrap="nowrap"
             marginLeft="auto"
             width="auto"

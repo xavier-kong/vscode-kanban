@@ -114,7 +114,7 @@ function ColumnHeader({
                 </Box>
             ) : (
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Typography sx={{ marginTop: '5%' }}>{name}</Typography>
+                    <Typography sx={{ marginY: '6%' }}>{name}</Typography>
                     {displayIcon ? (
                         <div>
                             <IconButton
