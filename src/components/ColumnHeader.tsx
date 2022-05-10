@@ -59,8 +59,8 @@ function ColumnHeader({
         <Container
             sx={{
                 marginTop: '10px',
-                borderBottom: '1px solid',
-                borderColor: 'white',
+                borderBottom: status === 'new' ? null : '1px solid',
+                borderColor: status === 'new' ? null : 'white',
             }}
         >
             {status === 'new' || status === 'rename' ? (
