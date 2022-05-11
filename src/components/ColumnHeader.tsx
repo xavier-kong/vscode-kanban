@@ -29,15 +29,15 @@ function ColumnHeader({
     const [input, setInput] = useState('');
     const [anchorEl, setAnchorEl] = useState<any | null>(null);
     const [inputError, setInputError] = useState(false);
-
     const open = Boolean(anchorEl);
 
-    const handleClick = (event: any) => {
+    function handleClick(event: any) {
         setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
+    }
+
+    function handleClose() {
         setAnchorEl(null);
-    };
+    }
 
     function checkForInputError() {
         if (input === '' || input === ' ') {
@@ -74,37 +74,35 @@ function ColumnHeader({
                         {inputError ? (
                             <WhiteCssTextField
                                 error
-                                label="Enter Column Name"
-                                id="custom-css-outlined-input"
-                                variant="standard"
+                                value={input}
                                 autoFocus={true}
+                                variant="standard"
+                                onKeyPress={onKeyPress}
+                                label="Enter Column Name"
+                                helperText="Please enter a valid name."
                                 inputProps={{
                                     style: { color: 'white' },
                                 }}
                                 InputLabelProps={{
                                     style: { color: '#fff' },
                                 }}
-                                onKeyPress={onKeyPress}
-                                value={input}
                                 onChange={(event) => {
                                     setInput(event.target.value);
                                 }}
-                                helperText="Please enter a valid name."
                             />
                         ) : (
                             <WhiteCssTextField
-                                label="Enter Column Name"
-                                id="custom-css-outlined-input"
-                                variant="standard"
+                                value={input}
                                 autoFocus={true}
+                                variant="standard"
+                                onKeyPress={onKeyPress}
+                                label="Enter Column Name"
                                 inputProps={{
                                     style: { color: 'white' },
                                 }}
                                 InputLabelProps={{
                                     style: { color: '#fff' },
                                 }}
-                                onKeyPress={onKeyPress}
-                                value={input}
                                 onChange={(event) => {
                                     setInput(event.target.value);
                                 }}
@@ -113,29 +111,39 @@ function ColumnHeader({
                     </ClickAwayListener>
                 </Box>
             ) : (
-                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <Typography sx={{ marginTop: '3%', marginBottom: '5%' }}>
+                <Box
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                    }}
+                >
+                    <Typography
+                        sx={{
+                            marginTop: '3%',
+                            marginBottom: '5%',
+                        }}
+                    >
                         {name}
                     </Typography>
                     {displayIcon ? (
                         <div>
                             <IconButton
-                                sx={{ color: '#fff' }}
                                 size="medium"
-                                aria-controls={open ? 'basic-menu' : undefined}
                                 aria-haspopup="true"
-                                aria-expanded={open ? 'true' : undefined}
                                 onClick={handleClick}
+                                sx={{ color: '#fff' }}
+                                aria-controls={open ? 'basic-menu' : undefined}
+                                aria-expanded={open ? 'true' : undefined}
                             >
                                 <MoreHorizIcon />
                             </IconButton>
                             <ColumnHeaderMenu
-                                anchorEl={anchorEl}
                                 open={open}
+                                position={position}
+                                anchorEl={anchorEl}
                                 handleClose={handleClose}
                                 deleteColumn={deleteColumn}
                                 setColumnStatus={setColumnStatus}
-                                position={position}
                             />
                         </div>
                     ) : null}

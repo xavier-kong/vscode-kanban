@@ -49,7 +49,6 @@ function Kanban() {
                 default: true,
                 position: columns.length,
                 status: 'new',
-                // color
                 tasks: [],
             });
 
