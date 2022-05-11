@@ -25,65 +25,63 @@ function ColumnHeaderMenu({
     setColumnStatus,
     position,
 }: PropTypes) {
+    const iconStyle = { color: 'white' };
+
     function handleColumnRename() {
         setColumnStatus('rename', position);
     }
+
     function handleColumnDelete() {
         deleteColumn(position);
     }
+
     function handleColumnHide() {
         setColumnStatus('hide', position);
     }
 
     return (
         <DarkStyledMenu
-            anchorEl={anchorEl}
             open={open}
+            anchorEl={anchorEl}
             onClose={handleClose}
             MenuListProps={{
                 'aria-labelledby': 'basic-button',
             }}
         >
             <MenuList>
-                <MenuItem
-                    onClick={(e) => {
-                        e.preventDefault();
-                        handleColumnRename();
-                    }}
-                >
-                    <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
-                        Rename
-                    </ListItemText>
-                    <ListItemIcon>
-                        <EditIcon style={{ color: 'white' }} />
-                    </ListItemIcon>
-                </MenuItem>
-                <MenuItem
-                    onClick={(e) => {
-                        e.preventDefault();
-                        handleColumnDelete();
-                    }}
-                >
-                    <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
-                        Delete
-                    </ListItemText>
-                    <ListItemIcon>
-                        <DeleteOutlineIcon style={{ color: 'white' }} />
-                    </ListItemIcon>
-                </MenuItem>
-                <MenuItem
-                    onClick={(e) => {
-                        e.preventDefault();
-                        handleColumnHide();
-                    }}
-                >
-                    <ListItemText primaryTypographyProps={{ variant: 'body2' }}>
-                        Hide
-                    </ListItemText>
-                    <ListItemIcon>
-                        <VisibilityOffIcon style={{ color: 'white' }} />
-                    </ListItemIcon>
-                </MenuItem>
+                {[
+                    {
+                        name: 'Rename',
+                        icon: <EditIcon style={iconStyle} />,
+                        onClick: () => {
+                            return handleColumnRename();
+                        },
+                    },
+                    {
+                        name: 'Delete',
+                        icon: <DeleteOutlineIcon style={iconStyle} />,
+                        onClick: handleColumnDelete(),
+                    },
+                    {
+                        name: 'Hide',
+                        icon: <VisibilityOffIcon style={iconStyle} />,
+                        onClick: handleColumnHide(),
+                    },
+                ].map((item) => (
+                    <MenuItem
+                        onClick={(e) => {
+                            e.preventDefault();
+                            item.onClick;
+                        }}
+                    >
+                        <ListItemText
+                            primaryTypographyProps={{ variant: 'body2' }}
+                        >
+                            {item.name}
+                        </ListItemText>
+                        <ListItemIcon>{item.icon}</ListItemIcon>
+                    </MenuItem>
+                ))}
             </MenuList>
         </DarkStyledMenu>
     );
