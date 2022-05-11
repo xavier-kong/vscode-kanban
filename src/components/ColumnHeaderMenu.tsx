@@ -26,6 +26,23 @@ function ColumnHeaderMenu({
     position,
 }: PropTypes) {
     const iconStyle = { color: 'white' };
+    const menuItems = [
+        {
+            name: 'Rename',
+            icon: <EditIcon style={iconStyle} />,
+            onClick: () => handleColumnRename(),
+        },
+        {
+            name: 'Delete',
+            icon: <DeleteOutlineIcon style={iconStyle} />,
+            onClick: () => handleColumnDelete(),
+        },
+        {
+            name: 'Hide',
+            icon: <VisibilityOffIcon style={iconStyle} />,
+            onClick: () => handleColumnHide(),
+        },
+    ];
 
     function handleColumnRename() {
         setColumnStatus('rename', position);
@@ -49,39 +66,24 @@ function ColumnHeaderMenu({
             }}
         >
             <MenuList>
-                {[
-                    {
-                        name: 'Rename',
-                        icon: <EditIcon style={iconStyle} />,
-                        onClick: () => {
-                            return handleColumnRename();
-                        },
-                    },
-                    {
-                        name: 'Delete',
-                        icon: <DeleteOutlineIcon style={iconStyle} />,
-                        onClick: handleColumnDelete(),
-                    },
-                    {
-                        name: 'Hide',
-                        icon: <VisibilityOffIcon style={iconStyle} />,
-                        onClick: handleColumnHide(),
-                    },
-                ].map((item) => (
-                    <MenuItem
-                        onClick={(e) => {
-                            e.preventDefault();
-                            item.onClick;
-                        }}
-                    >
-                        <ListItemText
-                            primaryTypographyProps={{ variant: 'body2' }}
+                {menuItems.map((item) => {
+                    const { name, icon, onClick } = item;
+                    return (
+                        <MenuItem
+                            onClick={(e) => {
+                                e.preventDefault();
+                                onClick();
+                            }}
                         >
-                            {item.name}
-                        </ListItemText>
-                        <ListItemIcon>{item.icon}</ListItemIcon>
-                    </MenuItem>
-                ))}
+                            <ListItemText
+                                primaryTypographyProps={{ variant: 'body2' }}
+                            >
+                                {name}
+                            </ListItemText>
+                            <ListItemIcon>{icon}</ListItemIcon>
+                        </MenuItem>
+                    );
+                })}
             </MenuList>
         </DarkStyledMenu>
     );
