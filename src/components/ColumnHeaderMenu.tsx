@@ -28,31 +28,19 @@ function ColumnHeaderMenu({
         {
             name: 'Rename',
             icon: <EditIcon style={iconStyle} />,
-            onClick: () => handleColumnRename(),
+            onClick: () => setColumnStatus('rename', position),
         },
         {
             name: 'Delete',
             icon: <DeleteOutlineIcon style={iconStyle} />,
-            onClick: () => handleColumnDelete(),
+            onClick: () => deleteColumn(position),
         },
         {
             name: 'Hide',
             icon: <VisibilityOffIcon style={iconStyle} />,
-            onClick: () => handleColumnHide(),
+            onClick: () => setColumnStatus('hide', position),
         },
     ];
-
-    function handleColumnRename() {
-        setColumnStatus('rename', position);
-    }
-
-    function handleColumnDelete() {
-        deleteColumn(position);
-    }
-
-    function handleColumnHide() {
-        setColumnStatus('hide', position);
-    }
 
     return (
         <DarkStyledMenu
