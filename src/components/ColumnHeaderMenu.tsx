@@ -1,12 +1,10 @@
-import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import { PopoverProps } from '@mui/material/Popover';
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import EditIcon from '@mui/icons-material/Edit';
 import DarkStyledMenu from './DarkStyledMenu';
+import ColumnHeaderMenuItem from './ColumnHeaderMenuItem';
 
 interface PropTypes {
     anchorEl: PopoverProps['anchorEl'];
@@ -67,21 +65,12 @@ function ColumnHeaderMenu({
         >
             <MenuList>
                 {menuItems.map((item) => {
-                    const { name, icon, onClick } = item;
                     return (
-                        <MenuItem
-                            onClick={(e) => {
-                                e.preventDefault();
-                                onClick();
-                            }}
-                        >
-                            <ListItemText
-                                primaryTypographyProps={{ variant: 'body2' }}
-                            >
-                                {name}
-                            </ListItemText>
-                            <ListItemIcon>{icon}</ListItemIcon>
-                        </MenuItem>
+                        <ColumnHeaderMenuItem
+                            name={item.name}
+                            icon={item.icon}
+                            onClick={item.onClick}
+                        />
                     );
                 })}
             </MenuList>
