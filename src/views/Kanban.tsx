@@ -4,7 +4,12 @@ import SingleColumn from '../components/SingleColumn';
 import HiddenColumns from '../components/HiddenColumns';
 import Grid, { GridSize } from '@mui/material/Grid';
 import Columns from '../types/Columns';
-import { DragDropContext, DropResult } from 'react-beautiful-dnd';
+import {
+    DragDropContext,
+    DropResult,
+    Droppable,
+    Draggable,
+} from 'react-beautiful-dnd';
 
 const mockData = {
     name: 'default',
@@ -102,23 +107,27 @@ function Kanban() {
                 width="auto"
                 sx={{ overflow: 'auto' }}
             >
-                {columns
-                    .filter(
-                        (column) =>
-                            column.status === 'display' ||
-                            column.status === 'new' ||
-                            column.status === 'rename'
-                    )
-                    .map((column) => (
-                        <SingleColumn
-                            key={column.position}
-                            column={column}
-                            xs={xs}
-                            setColumnName={setColumnName}
-                            deleteColumn={deleteColumn}
-                            setColumnStatus={setColumnStatus}
-                        />
-                    ))}
+                <Droppable>
+                    {columns
+                        .filter(
+                            (column) =>
+                                column.status === 'display' ||
+                                column.status === 'new' ||
+                                column.status === 'rename'
+                        )
+                        .map((column) => (
+                            <Draggable>
+                                <SingleColumn
+                                    key={column.position}
+                                    column={column}
+                                    xs={xs}
+                                    setColumnName={setColumnName}
+                                    deleteColumn={deleteColumn}
+                                    setColumnStatus={setColumnStatus}
+                                />
+                            </Draggable>
+                        ))}
+                </Droppable>
                 <Grid key={columns.length + 1} item xs={xs}>
                     <CreateColumnButton createColumn={createColumn} />
                     <HiddenColumns
