@@ -4,7 +4,7 @@ import SingleColumn from '../components/SingleColumn';
 import HiddenColumns from '../components/HiddenColumns';
 import Grid, { GridSize } from '@mui/material/Grid';
 import Columns from '../types/Columns';
-import { DragDropContext } from 'react-beautiful-dnd';
+import { DragDropContext, DropResult } from 'react-beautiful-dnd';
 
 const mockData = {
     name: 'default',
@@ -88,7 +88,7 @@ function Kanban() {
         setColumns(newColumns);
     }
 
-    function onDragEnd(result) {
+    function onDragEnd(result: DropResult) {
         console.log(result);
     }
 
