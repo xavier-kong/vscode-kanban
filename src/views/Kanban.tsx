@@ -107,26 +107,35 @@ function Kanban() {
                 width="auto"
                 sx={{ overflow: 'auto' }}
             >
-                <Droppable>
-                    {columns
-                        .filter(
-                            (column) =>
-                                column.status === 'display' ||
-                                column.status === 'new' ||
-                                column.status === 'rename'
-                        )
-                        .map((column) => (
-                            <Draggable>
-                                <SingleColumn
-                                    key={column.position}
-                                    column={column}
-                                    xs={xs}
-                                    setColumnName={setColumnName}
-                                    deleteColumn={deleteColumn}
-                                    setColumnStatus={setColumnStatus}
-                                />
-                            </Draggable>
-                        ))}
+                <Droppable droppableId="kanban" {(provided, snapshot) => {
+                    <div
+                        {...provided.droppableProps}
+                        ref={provided.innerRef}
+                    >
+                        {columns
+                            .filter(
+                                (column) =>
+                                    column.status === 'display' ||
+                                    column.status === 'new' ||
+                                    column.status === 'rename'
+                            )
+                            .map((column) => (
+                                <Draggable draggableId={column.position} index={column.position}>
+                                    {(provided, snapshot) => (
+
+                                        <SingleColumn
+                                        key={column.position}
+                                        column={column}
+                                        xs={xs}
+                                        setColumnName={setColumnName}
+                                        deleteColumn={deleteColumn}
+                                        setColumnStatus={setColumnStatus}
+                                        />
+                                        )}
+                                </Draggable>
+                            ))}
+                    </div>
+                }}>
                 </Droppable>
                 <Grid key={columns.length + 1} item xs={xs}>
                     <CreateColumnButton createColumn={createColumn} />
