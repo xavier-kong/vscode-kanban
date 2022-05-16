@@ -108,12 +108,9 @@ function Kanban() {
                 sx={{ overflow: 'auto' }}
             >
                 <Droppable droppableId="kanban">
-                    {(provided, snapshot) => {
-                        <div
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                        >
-                            {columns
+                    {(provided) => {
+                        <div {...provided.droppableProps} ref={provided.innerRef}>
+                            columns
                                 .filter(
                                     (column) =>
                                         column.status === 'display' ||
@@ -124,8 +121,10 @@ function Kanban() {
                                     <Draggable
                                         draggableId={column.position}
                                         index={column.position}
+                                        {...provided.droppableProps}
+                                        ref={provided.innerRef}
                                     >
-                                        {(provided, snapshot) => (
+                                        {() => (
                                             <SingleColumn
                                                 key={column.position}
                                                 column={column}
@@ -138,9 +137,10 @@ function Kanban() {
                                             />
                                         )}
                                     </Draggable>
-                                ))}
-                        </div>;
+                                ));
+                        </div>
                     }}
+
                 </Droppable>
                 <Grid key={columns.length + 1} item xs={xs}>
                     <CreateColumnButton createColumn={createColumn} />
