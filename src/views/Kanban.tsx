@@ -44,7 +44,13 @@ function Kanban() {
     const xs: GridSize = 'auto';
 
     useEffect(() => {
-        setColumns(mockData.columns as Columns[]);
+        const filteredColumns = mockData.columns.filter(
+            (column) =>
+                column.status === 'display' ||
+                column.status === 'new' ||
+                column.status === 'rename'
+        );
+        setColumns(filteredColumns as Columns[]);
     }, []);
 
     function createColumn() {
@@ -108,23 +114,23 @@ function Kanban() {
                 sx={{ overflow: 'auto' }}
             >
                 <Droppable droppableId="kanban">
-                    {(provided) => {
-                        <div {...provided.droppableProps} ref={provided.innerRef}>
-                            columns
-                                .filter(
-                                    (column) =>
-                                        column.status === 'display' ||
-                                        column.status === 'new' ||
-                                        column.status === 'rename'
-                                )
-                                .map((column) => (
-                                    <Draggable
-                                        draggableId={column.position}
-                                        index={column.position}
-                                        {...provided.droppableProps}
-                                        ref={provided.innerRef}
-                                    >
-                                        {() => (
+                    {(provided) => (
+                        <div
+                            {...provided.droppableProps}
+                            ref={provided.innerRef}
+                        >
+                            {provided.placeholder}
+                            {columns.map((column) => (
+                                <Draggable
+                                    draggableId={column.position.toString()}
+                                    index={column.position}
+                                >
+                                    {(provided) => (
+                                        <div
+                                            {...provided.draggableProps}
+                                            {...provided.dragHandleProps}
+                                            ref={provided.innerRef}
+                                        >
                                             <SingleColumn
                                                 key={column.position}
                                                 column={column}
@@ -135,12 +141,14 @@ function Kanban() {
                                                     setColumnStatus
                                                 }
                                             />
-                                        )}
-                                    </Draggable>
-                                ));
+                                        </div>
+                                    )}
+                                </Draggable>
+                            ))}
                         </div>
-                    }}
+                    )}
 
+                    {/* https://github.com/colbyfayock/my-final-space-characters/blob/master/src/App.js */}
                 </Droppable>
                 <Grid key={columns.length + 1} item xs={xs}>
                     <CreateColumnButton createColumn={createColumn} />
