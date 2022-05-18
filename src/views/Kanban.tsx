@@ -113,11 +113,15 @@ function Kanban() {
                 width="auto"
                 sx={{ overflow: 'auto' }}
             >
-                <Droppable droppableId="kanban">
+                <Droppable droppableId="kanban" direction="horizontal">
                     {(provided) => (
                         <div
                             {...provided.droppableProps}
                             ref={provided.innerRef}
+                            style={{
+                                display: 'flex',
+                                // padding: 'grid',
+                            }}
                         >
                             {provided.placeholder}
                             {columns.map((column) => (
