@@ -121,6 +121,7 @@ function Kanban() {
                             style={{
                                 display: 'flex',
                                 // padding: 'grid',
+                                paddingTop: '3%',
                             }}
                         >
                             {provided.placeholder}
