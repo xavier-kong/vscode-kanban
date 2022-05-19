@@ -136,8 +136,9 @@ function Kanban() {
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}
                                             style={{
-                                                paddingLeft: '4%',
-                                                paddingRight: '4%',
+                                                paddingLeft: 30,
+                                                paddingRight: 30,
+                                                margin: `0 0 0 0`,
                                             }}
                                         >
                                             <SingleColumn
