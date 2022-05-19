@@ -135,6 +135,10 @@ function Kanban() {
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}
+                                            style={{
+                                                paddingLeft: '4%',
+                                                paddingRight: '4%',
+                                            }}
                                         >
                                             <SingleColumn
                                                 key={column.position}
@@ -152,8 +156,8 @@ function Kanban() {
                             ))}
                         </div>
                     )}
-
                     {/* https://github.com/colbyfayock/my-final-space-characters/blob/master/src/App.js */}
+                    {/* https://codesandbox.io/s/4wrv2v0lo9?file=/index.js:1049-1084 */}
                 </Droppable>
                 <Grid key={columns.length + 1} item xs={xs}>
                     <CreateColumnButton createColumn={createColumn} />
