@@ -120,7 +120,8 @@ function Kanban() {
                             ref={provided.innerRef}
                             style={{
                                 display: 'flex',
-                                // padding: 'grid',
+                                padding: 'grid',
+                                width: '70%',
                                 paddingTop: '3%',
                             }}
                         >
@@ -136,9 +137,11 @@ function Kanban() {
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}
                                             style={{
-                                                paddingLeft: 30,
-                                                paddingRight: 30,
-                                                margin: `0 0 0 0`,
+                                                // paddingLeft: 30,
+                                                // paddingRight: 30,
+                                                marginLeft: '10%',
+                                                marginRight: '10%',
+                                                width: '10%',
                                             }}
                                         >
                                             <SingleColumn
