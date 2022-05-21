@@ -113,6 +113,7 @@ function Kanban() {
                 width="auto"
                 sx={{ overflow: 'auto' }}
             >
+                {/* now need to write logic to get spacing and size correctly based on number of columns lol */}
                 <Droppable droppableId="kanban" direction="horizontal">
                     {(provided) => (
                         <div
@@ -137,11 +138,9 @@ function Kanban() {
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}
                                             style={{
-                                                // paddingLeft: 30,
-                                                // paddingRight: 30,
-                                                marginLeft: '10%',
-                                                marginRight: '10%',
-                                                width: '10%',
+                                                marginLeft: '1%',
+                                                marginRight: '1%',
+                                                width: '30%',
                                             }}
                                         >
                                             <SingleColumn
