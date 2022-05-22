@@ -139,7 +139,7 @@ function Kanban() {
                                             style={{
                                                 marginLeft: '1%',
                                                 marginRight: '1%',
-                                                width: '30%',
+                                                width: '70%',
                                             }}
                                         >
                                             <SingleColumn
