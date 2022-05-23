@@ -101,6 +101,8 @@ function Kanban() {
 
     function onDragEnd(result: DropResult) {
         console.log(result);
+        // reorder list such that source index column is now in destination column
+        // and following columns are in correct
     }
 
     return (
