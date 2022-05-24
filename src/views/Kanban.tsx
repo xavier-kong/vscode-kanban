@@ -119,6 +119,11 @@ function Kanban() {
 
         // reorder list such that source index column is now in destination column
         // and following columns are in correct
+
+        // same logic for moving backwards or forwards
+        // direction = sign of destination index - source index
+        // while not in destination index (could also use a for loop based on number of slots to swap)
+        //    swap positions of neighboring column based on direction
     }
 
     return (
