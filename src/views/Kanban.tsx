@@ -101,6 +101,22 @@ function Kanban() {
 
     function onDragEnd(result: DropResult) {
         console.log(result);
+        // {
+        //     "draggableId": "0",
+        //     "type": "DEFAULT",
+        //     "source": {
+        //         "index": 0,
+        //         "droppableId": "kanban"
+        //     },
+        //     "reason": "DROP",
+        //     "mode": "FLUID",
+        //     "destination": {
+        //         "droppableId": "kanban",
+        //         "index": 1
+        //     },
+        //     "combine": null
+        // }
+
         // reorder list such that source index column is now in destination column
         // and following columns are in correct
     }
