@@ -116,9 +116,12 @@ function Kanban() {
         //     },
         //     "combine": null
         // }
-
-        // reorder list such that source index column is now in destination column
-        // and following columns are in correct
+        const { source, destination } = result;
+        const newColumns = columns;
+        const columnToMove = columns.find(
+            (column) => column.position === source.index
+        );
+        const placesToMove = destination ? destination.index - source.index : 0;
 
         // same logic for moving backwards or forwards
         // direction = sign of destination index - source index
