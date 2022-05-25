@@ -125,8 +125,11 @@ function Kanban() {
 
         // same logic for moving backwards or forwards
         // direction = sign of destination index - source index
-        // while not in destination index (could also use a for loop based on number of slots to swap)
-        //    swap positions of neighboring column based on direction
+        // get index of column with source index / column position
+        // for loop with number of swaps based on number of places to move (regardless of direction)
+        //    find index of next column in direction of swap
+        //    swap positions of neighboring column
+        //    increment/decrement index tracker of column to move
     }
 
     return (
