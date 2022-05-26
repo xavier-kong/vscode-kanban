@@ -116,17 +116,18 @@ function Kanban() {
         //     },
         //     "combine": null
         // }
-        const { source, destination } = result;
-        const newColumns = columns;
-        let columnToMoveIndex = source.index;
-        const placesToMove = destination ? destination.index - source.index : 0;
-        const steps = placesToMove >= 0 ? 1 : -1;
 
-        for (let i = 1; i <= placesToMove; i++) {
-            const columnToSwapToIndex = newColumns.findIndex(
-                (column) => column.position === columnToMoveIndex + steps
-            );
-        }
+        // const { source, destination } = result;
+        // const newColumns = columns;
+        // let columnToMoveIndex = source.index;
+        // const placesToMove = destination ? destination.index - source.index : 0;
+        // const steps = placesToMove >= 0 ? 1 : -1;
+
+        // for (let i = 1; i <= placesToMove; i++) {
+        //     const columnToSwapToIndex = newColumns.findIndex(
+        //         (column) => column.position === columnToMoveIndex + steps
+        //     );
+        // }
 
         // same logic for moving backwards or forwards
         // direction = sign of destination index - source index
@@ -138,6 +139,29 @@ function Kanban() {
 
         // or maybe you could do forEach in newColumns where position in range add steps (1 or -1)
         // then column to move change index
+
+        const { source, destination } = result;
+
+        const newColumns = columns;
+        if (destination) {
+            const diff = destination.index - source.index;
+            if (diff !== 0) {
+                const swapRangeStart = Math.min(
+                    source.index,
+                    destination.index
+                );
+                const swapRangeEnd = Math.max(source.index, destination.index);
+                const steps = destination.index - source.index >= 0 ? 1 : -1;
+                for (let i = 0; i < newColumns.length; i++) {
+                    if (
+                        newColumns[i].position >= swapRangeEnd ||
+                        newColumns[i].position <= swapRangeStart
+                    ) {
+                        newColumns[i].position += steps;
+                    }
+                }
+            }
+        }
     }
 
     return (
