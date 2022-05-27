@@ -8,6 +8,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import Box from '@mui/material/Box';
 import Columns from '../types/Columns';
+import { ClickAwayListener } from '@mui/material';
 
 type Status = 'display' | 'new' | 'rename' | 'hide';
 
@@ -32,49 +33,68 @@ function HiddenColumns({ columns, setColumnStatus }: PropTypes) {
     };
 
     return (
-        <Container>
-            <Box sx={{ border: 0.1, borderColor: 'white', borderRadius: '5%' }}>
-                <Button
-                    id="basic-button"
-                    aria-controls={open ? 'basic-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick}
-                    style={style}
+        <ClickAwayListener
+            onClickAway={() => {
+                handleClose();
+            }}
+        >
+            <Container>
+                <Box
+                    sx={{
+                        border: 0.1,
+                        borderColor: 'white',
+                        borderRadius: '5%',
+                    }}
                 >
-                    Hidden Columns
-                </Button>
-            </Box>
-            <DarkStyledMenu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={columns.length > 0 ? open : false}
-                onClose={handleClose}
-                MenuListProps={{
-                    'aria-labelledby': 'basic-button',
-                }}
-            >
-                {columns.map((column) => {
-                    return (
-                        <MenuItem key={column.position}>
-                            <ListItemText
-                                primaryTypographyProps={{ variant: 'body2' }}
-                            >
-                                {column.name}
-                            </ListItemText>
-                            <ListItemIcon
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    setColumnStatus('display', column.position);
-                                }}
-                            >
-                                <VisibilityIcon style={{ color: 'white' }} />
-                            </ListItemIcon>
-                        </MenuItem>
-                    );
-                })}
-            </DarkStyledMenu>
-        </Container>
+                    <Button
+                        id="basic-button"
+                        aria-controls={open ? 'basic-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                        style={style}
+                    >
+                        Hidden Columns
+                    </Button>
+                </Box>
+                <DarkStyledMenu
+                    id="basic-menu"
+                    anchorEl={anchorEl}
+                    open={columns.length > 0 ? open : false}
+                    onClose={handleClose}
+                    MenuListProps={{
+                        'aria-labelledby': 'basic-button',
+                    }}
+                >
+                    {columns.map((column) => {
+                        return (
+                            <MenuItem key={column.position}>
+                                <ListItemText
+                                    primaryTypographyProps={{
+                                        variant: 'body2',
+                                    }}
+                                >
+                                    {column.name}
+                                </ListItemText>
+                                <ListItemIcon
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        setColumnStatus(
+                                            'display',
+                                            column.position
+                                        );
+                                    }}
+                                >
+                                    <VisibilityIcon
+                                        style={{ color: 'white' }}
+                                    />
+                                </ListItemIcon>
+                            </MenuItem>
+                        );
+                    })}
+                </DarkStyledMenu>
+            </Container>
+        </ClickAwayListener>
     );
 }
 
