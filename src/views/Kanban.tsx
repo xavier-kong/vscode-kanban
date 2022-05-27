@@ -103,37 +103,19 @@ function Kanban() {
         // i will figure this out later I need to work on the animations first
 
         const { source, destination } = result;
-        console.log('sd', source, destination);
-
-        const newColumns = columns;
-        console.log('old', newColumns);
 
         if (destination) {
-            const diff = destination.index - source.index;
-            if (diff !== 0) {
-                const swapRangeStart = Math.min(
-                    source.index,
-                    destination.index
-                );
-                const swapRangeEnd = Math.max(source.index, destination.index);
+            const newColumns = columns;
 
-                const steps = destination.index - source.index >= 0 ? -1 : 1;
-                console.log(steps, swapRangeStart, swapRangeEnd);
-                for (let i = 0; i < newColumns.length; i++) {
-                    if (
-                        newColumns[i].position >= swapRangeEnd ||
-                        newColumns[i].position <= swapRangeStart
-                    ) {
-                        newColumns[i].position += steps;
-                    }
-                    if (newColumns[i].position === source.index + steps) {
-                        newColumns[i].position = destination.index;
-                    }
-                }
+            const [removed] = newColumns.splice(source.index, 1);
+            newColumns.splice(destination.index, 0, removed);
+
+            for (let i = 0; i < newColumns.length; i++) {
+                newColumns[i].position = i;
             }
-        }
 
-        console.log('new', newColumns);
+            setColumns(newColumns);
+        }
     }
 
     return (
@@ -157,6 +139,7 @@ function Kanban() {
                                 width: '70%',
                                 paddingTop: '3%',
                             }}
+                            // can abstract styling, include different styling for on drag
                         >
                             {columns.map((column) => (
                                 <Draggable
