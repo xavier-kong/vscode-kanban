@@ -100,49 +100,14 @@ function Kanban() {
     }
 
     function onDragEnd(result: DropResult) {
-        console.log(result);
-        // {
-        //     "draggableId": "0",
-        //     "type": "DEFAULT",
-        //     "source": {
-        //         "index": 0,
-        //         "droppableId": "kanban"
-        //     },
-        //     "reason": "DROP",
-        //     "mode": "FLUID",
-        //     "destination": {
-        //         "droppableId": "kanban",
-        //         "index": 1
-        //     },
-        //     "combine": null
-        // }
-
-        // const { source, destination } = result;
-        // const newColumns = columns;
-        // let columnToMoveIndex = source.index;
-        // const placesToMove = destination ? destination.index - source.index : 0;
-        // const steps = placesToMove >= 0 ? 1 : -1;
-
-        // for (let i = 1; i <= placesToMove; i++) {
-        //     const columnToSwapToIndex = newColumns.findIndex(
-        //         (column) => column.position === columnToMoveIndex + steps
-        //     );
-        // }
-
-        // same logic for moving backwards or forwards
-        // direction = sign of destination index - source index
-        // get index of column with source index / column position
-        // for loop with number of swaps based on number of places to move (regardless of direction)
-        //    find index of next column in direction of swap
-        //    swap positions of neighboring column
-        //    increment/decrement index tracker of column to move
-
-        // or maybe you could do forEach in newColumns where position in range add steps (1 or -1)
-        // then column to move change index
+        // i will figure this out later I need to work on the animations first
 
         const { source, destination } = result;
+        console.log('sd', source, destination);
 
         const newColumns = columns;
+        console.log('old', newColumns);
+
         if (destination) {
             const diff = destination.index - source.index;
             if (diff !== 0) {
@@ -151,7 +116,9 @@ function Kanban() {
                     destination.index
                 );
                 const swapRangeEnd = Math.max(source.index, destination.index);
-                const steps = destination.index - source.index >= 0 ? 1 : -1;
+
+                const steps = destination.index - source.index >= 0 ? -1 : 1;
+                console.log(steps, swapRangeStart, swapRangeEnd);
                 for (let i = 0; i < newColumns.length; i++) {
                     if (
                         newColumns[i].position >= swapRangeEnd ||
@@ -159,9 +126,14 @@ function Kanban() {
                     ) {
                         newColumns[i].position += steps;
                     }
+                    if (newColumns[i].position === source.index + steps) {
+                        newColumns[i].position = destination.index;
+                    }
                 }
             }
         }
+
+        console.log('new', newColumns);
     }
 
     return (
