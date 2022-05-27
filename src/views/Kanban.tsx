@@ -44,20 +44,8 @@ function Kanban() {
     const xs: GridSize = 'auto';
 
     useEffect(() => {
-        const filteredColumns = filterVisibleColumns(
-            mockData.columns as Columns[]
-        );
-        setColumns(filteredColumns as Columns[]);
+        setColumns(mockData.columns as Columns[]);
     }, []);
-
-    function filterVisibleColumns(columns: Columns[]) {
-        return columns.filter(
-            (column) =>
-                column.status === 'display' ||
-                column.status === 'new' ||
-                column.status === 'rename'
-        );
-    }
 
     function createColumn() {
         if (!columns.some((column) => column.status === 'new')) {
@@ -95,8 +83,7 @@ function Kanban() {
             (element) => element.position === position
         );
         newColumns[columnIndex].status = status;
-        const filteredColumns = filterVisibleColumns(newColumns);
-        setColumns(filteredColumns);
+        setColumns(newColumns);
     }
 
     function deleteColumn(position: number) {
@@ -148,38 +135,42 @@ function Kanban() {
                             }}
                             // can abstract styling, include different styling for on drag
                         >
-                            {columns.map((column) => (
-                                <Draggable
-                                    draggableId={column.position.toString()}
-                                    index={column.position}
-                                >
-                                    {(provided) => (
-                                        <div
-                                            {...provided.draggableProps}
-                                            {...provided.dragHandleProps}
-                                            ref={provided.innerRef}
-                                            style={{
-                                                marginLeft: '1%',
-                                                marginRight: '1%',
-                                                width: '70%',
-                                                ...provided.draggableProps
-                                                    .style,
-                                            }}
-                                        >
-                                            <SingleColumn
-                                                key={column.position}
-                                                column={column}
-                                                xs={xs}
-                                                setColumnName={setColumnName}
-                                                deleteColumn={deleteColumn}
-                                                setColumnStatus={
-                                                    setColumnStatus
-                                                }
-                                            />
-                                        </div>
-                                    )}
-                                </Draggable>
-                            ))}
+                            {columns
+                                .filter((column) => column.status !== 'hide')
+                                .map((column) => (
+                                    <Draggable
+                                        draggableId={column.position.toString()}
+                                        index={column.position}
+                                    >
+                                        {(provided) => (
+                                            <div
+                                                {...provided.draggableProps}
+                                                {...provided.dragHandleProps}
+                                                ref={provided.innerRef}
+                                                style={{
+                                                    marginLeft: '1%',
+                                                    marginRight: '1%',
+                                                    width: '70%',
+                                                    ...provided.draggableProps
+                                                        .style,
+                                                }}
+                                            >
+                                                <SingleColumn
+                                                    key={column.position}
+                                                    column={column}
+                                                    xs={xs}
+                                                    setColumnName={
+                                                        setColumnName
+                                                    }
+                                                    deleteColumn={deleteColumn}
+                                                    setColumnStatus={
+                                                        setColumnStatus
+                                                    }
+                                                />
+                                            </div>
+                                        )}
+                                    </Draggable>
+                                ))}
                             {provided.placeholder}
                         </div>
                     )}
