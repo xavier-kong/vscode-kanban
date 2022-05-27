@@ -173,6 +173,8 @@ function Kanban() {
                                                 marginLeft: '1%',
                                                 marginRight: '1%',
                                                 width: '70%',
+                                                ...provided.draggableProps
+                                                    .style,
                                             }}
                                         >
                                             <SingleColumn
