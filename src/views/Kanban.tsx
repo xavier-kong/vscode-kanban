@@ -143,6 +143,7 @@ function Kanban() {
                                     <Draggable
                                         draggableId={column.position.toString()}
                                         index={column.position}
+                                        key={column.position}
                                     >
                                         {(provided) => (
                                             <div

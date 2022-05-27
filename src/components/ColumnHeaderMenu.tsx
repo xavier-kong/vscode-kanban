@@ -58,6 +58,7 @@ function ColumnHeaderMenu({
                             name={item.name}
                             icon={item.icon}
                             onClick={item.onClick}
+                            key={item.name}
                         />
                     );
                 })}
