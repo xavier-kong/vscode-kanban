@@ -3,12 +3,14 @@ import Grid, { GridSize } from '@mui/material/Grid';
 import ColumnHeader from './ColumnHeader';
 import Columns from '../types/Columns';
 
+type Status = 'display' | 'new' | 'rename' | 'hide';
+
 interface PropTypes {
     xs: GridSize;
     column: Columns;
     setColumnName: Function;
     deleteColumn: Function;
-    setColumnStatus: Function;
+    setColumnStatus: (status: Status, position: number) => void;
 }
 
 function SingleColumn({

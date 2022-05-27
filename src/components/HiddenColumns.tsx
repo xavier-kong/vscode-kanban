@@ -9,8 +9,11 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import Box from '@mui/material/Box';
 import Columns from '../types/Columns';
 
+type Status = 'display' | 'new' | 'rename' | 'hide';
+
 interface PropTypes {
     columns: Columns[];
+    setColumnStatus: (status: Status, position: number) => void;
 }
 
 const style = {
@@ -18,7 +21,7 @@ const style = {
     border: 'none',
 };
 
-function HiddenColumns({ columns }: PropTypes) {
+function HiddenColumns({ columns, setColumnStatus }: PropTypes) {
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: any) => {

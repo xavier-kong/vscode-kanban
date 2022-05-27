@@ -181,6 +181,7 @@ function Kanban() {
                         columns={columns.filter(
                             (column) => column.status === 'hide'
                         )}
+                        setColumnStatus={setColumnStatus}
                     />
                 </Grid>
             </Grid>
