@@ -62,7 +62,12 @@ function HiddenColumns({ columns, setColumnStatus }: PropTypes) {
                             >
                                 {column.name}
                             </ListItemText>
-                            <ListItemIcon>
+                            <ListItemIcon
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setColumnStatus('display', column.position);
+                                }}
+                            >
                                 <VisibilityIcon style={{ color: 'white' }} />
                             </ListItemIcon>
                         </MenuItem>

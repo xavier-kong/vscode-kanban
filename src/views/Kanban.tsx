@@ -94,8 +94,6 @@ function Kanban() {
     }
 
     function onDragEnd(result: DropResult) {
-        // i will figure this out later I need to work on the animations first
-
         const { source, destination } = result;
 
         if (destination) {
@@ -104,8 +102,12 @@ function Kanban() {
             const [removed] = newColumns.splice(source.index, 1);
             newColumns.splice(destination.index, 0, removed);
 
+            const positions = newColumns
+                .map((column) => column.position)
+                .sort();
+
             for (let i = 0; i < newColumns.length; i++) {
-                newColumns[i].position = i;
+                newColumns[i].position = positions[i];
             }
 
             setColumns(newColumns);
