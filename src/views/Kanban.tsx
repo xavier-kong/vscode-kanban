@@ -44,14 +44,20 @@ function Kanban() {
     const xs: GridSize = 'auto';
 
     useEffect(() => {
-        const filteredColumns = mockData.columns.filter(
+        const filteredColumns = filterVisibleColumns(
+            mockData.columns as Columns[]
+        );
+        setColumns(filteredColumns as Columns[]);
+    }, []);
+
+    function filterVisibleColumns(columns: Columns[]) {
+        return columns.filter(
             (column) =>
                 column.status === 'display' ||
                 column.status === 'new' ||
                 column.status === 'rename'
         );
-        setColumns(filteredColumns as Columns[]);
-    }, []);
+    }
 
     function createColumn() {
         if (!columns.some((column) => column.status === 'new')) {
@@ -81,7 +87,7 @@ function Kanban() {
     }
 
     function setColumnStatus(
-        status: 'display' | 'new' | 'rename',
+        status: 'display' | 'new' | 'rename' | 'hide',
         position: number
     ) {
         const newColumns = [...columns];
@@ -89,7 +95,8 @@ function Kanban() {
             (element) => element.position === position
         );
         newColumns[columnIndex].status = status;
-        setColumns(newColumns);
+        const filteredColumns = filterVisibleColumns(newColumns);
+        setColumns(filteredColumns);
     }
 
     function deleteColumn(position: number) {
@@ -105,7 +112,7 @@ function Kanban() {
         const { source, destination } = result;
 
         if (destination) {
-            const newColumns = columns;
+            const newColumns = [...columns];
 
             const [removed] = newColumns.splice(source.index, 1);
             newColumns.splice(destination.index, 0, removed);
