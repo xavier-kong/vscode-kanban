@@ -158,7 +158,6 @@ function Kanban() {
                                 paddingTop: '3%',
                             }}
                         >
-                            {provided.placeholder}
                             {columns.map((column) => (
                                 <Draggable
                                     draggableId={column.position.toString()}
@@ -191,6 +190,7 @@ function Kanban() {
                                     )}
                                 </Draggable>
                             ))}
+                            {provided.placeholder}
                         </div>
                     )}
                 </Droppable>
