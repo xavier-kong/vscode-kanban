@@ -20,21 +20,18 @@ const mockData = {
             default: true,
             position: 0,
             status: 'display',
-            tasks: [],
         },
         {
             name: 'Doing',
             default: false,
             position: 1,
             status: 'display',
-            tasks: [],
         },
         {
             name: 'Done',
             default: true,
             position: 2,
             status: 'display',
-            tasks: [],
         },
     ],
 };
@@ -55,7 +52,6 @@ function Kanban() {
                 default: true,
                 position: columns.length,
                 status: 'new',
-                tasks: [],
             });
 
             setColumns(newColumns);

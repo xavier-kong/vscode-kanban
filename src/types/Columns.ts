@@ -3,5 +3,4 @@ export default interface Columns {
     default: boolean;
     status: 'display' | 'new' | 'rename' | 'hide';
     position: number;
-    tasks: never[];
 }
