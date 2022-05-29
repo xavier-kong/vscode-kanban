@@ -34,6 +34,13 @@ const mockData = {
             status: 'display',
         },
     ],
+    tasks: [
+        {
+            name: 'test',
+            column: 'To do',
+            position: 0,
+        },
+    ],
 };
 
 function Kanban() {
