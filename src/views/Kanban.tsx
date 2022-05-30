@@ -4,6 +4,7 @@ import SingleColumn from '../components/SingleColumn';
 import HiddenColumns from '../components/HiddenColumns';
 import Grid, { GridSize } from '@mui/material/Grid';
 import Columns from '../types/Columns';
+import Tasks from '../types/Tasks';
 import {
     DragDropContext,
     DropResult,
@@ -11,44 +12,17 @@ import {
     Draggable,
 } from 'react-beautiful-dnd';
 
-const mockData = {
-    name: 'default',
-    parent: null,
-    columns: [
-        {
-            name: 'To do',
-            default: true,
-            position: 0,
-            status: 'display',
-        },
-        {
-            name: 'Doing',
-            default: false,
-            position: 1,
-            status: 'display',
-        },
-        {
-            name: 'Done',
-            default: true,
-            position: 2,
-            status: 'display',
-        },
-    ],
-    tasks: [
-        {
-            name: 'test',
-            column: 'To do',
-            position: 0,
-        },
-    ],
-};
+interface PropTypes {
+    columns: Columns[];
+    tasks: Tasks[];
+}
 
-function Kanban() {
+function Kanban(props: PropTypes) {
     const [columns, setColumns] = useState<Columns[]>([]);
     const xs: GridSize = 'auto';
 
     useEffect(() => {
-        setColumns(mockData.columns as Columns[]);
+        setColumns(data.columns as Columns[]);
     }, []);
 
     function createColumn() {
