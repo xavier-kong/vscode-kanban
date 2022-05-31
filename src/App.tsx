@@ -1,5 +1,6 @@
 import React from 'react';
 import Kanban from './views/Kanban';
+import Columns from './types/Columns';
 
 const mockData = {
     name: 'default',
@@ -23,7 +24,7 @@ const mockData = {
             position: 2,
             status: 'display',
         },
-    ],
+    ] as Columns[],
     tasks: [
         {
             name: 'test',
@@ -34,7 +35,7 @@ const mockData = {
 };
 
 function App() {
-    return <Kanban data={mockData} />;
+    return <Kanban {...mockData} />;
 }
 
 export default App;

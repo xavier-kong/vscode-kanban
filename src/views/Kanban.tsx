@@ -15,9 +15,11 @@ import {
 interface PropTypes {
     columns: Columns[];
     tasks: Tasks[];
+    name: string;
+    parent: string | null;
 }
 
-function Kanban(props: PropTypes) {
+function Kanban(data: PropTypes) {
     const [columns, setColumns] = useState<Columns[]>([]);
     const xs: GridSize = 'auto';
 
