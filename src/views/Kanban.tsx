@@ -25,7 +25,7 @@ function Kanban(data: PropTypes) {
 
     useEffect(() => {
         setColumns(data.columns as Columns[]);
-    }, []);
+    }, [data.columns]);
 
     function createColumn() {
         if (!columns.some((column) => column.status === 'new')) {
@@ -148,6 +148,11 @@ function Kanban(data: PropTypes) {
                                                     setColumnStatus={
                                                         setColumnStatus
                                                     }
+                                                    tasks={data.tasks.filter(
+                                                        (task) =>
+                                                            task.column ===
+                                                            column.name
+                                                    )}
                                                 />
                                             </div>
                                         )}

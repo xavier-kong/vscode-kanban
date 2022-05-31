@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Grid, { GridSize } from '@mui/material/Grid';
 import ColumnHeader from './ColumnHeader';
 import Columns from '../types/Columns';
+import Tasks from '../types/Tasks';
 
 type Status = 'display' | 'new' | 'rename' | 'hide';
 
@@ -11,6 +12,7 @@ interface PropTypes {
     setColumnName: Function;
     deleteColumn: Function;
     setColumnStatus: (status: Status, position: number) => void;
+    tasks: Tasks[];
 }
 
 function SingleColumn({
@@ -19,6 +21,7 @@ function SingleColumn({
     setColumnName,
     deleteColumn,
     setColumnStatus,
+    tasks,
 }: PropTypes) {
     const { name, status, position } = column;
     const [displayIcon, setDisplayIcon] = useState(false);
