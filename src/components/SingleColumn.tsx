@@ -3,6 +3,7 @@ import Grid, { GridSize } from '@mui/material/Grid';
 import ColumnHeader from './ColumnHeader';
 import Columns from '../types/Columns';
 import Tasks from '../types/Tasks';
+import TaskList from './TaskList';
 
 type Status = 'display' | 'new' | 'rename' | 'hide';
 
@@ -44,6 +45,7 @@ function SingleColumn({
                 setColumnStatus={setColumnStatus}
                 displayIcon={displayIcon}
             />
+            <TaskList tasks={tasks} />
         </Grid>
     );
 }
