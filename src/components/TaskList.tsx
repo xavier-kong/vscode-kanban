@@ -5,7 +5,13 @@ interface PropTypes {
 }
 
 function TaskList({ tasks }: PropTypes) {
-    return <div></div>;
+    return (
+        <div>
+            {tasks.map((task) => (
+                <div>{task.name}</div>
+            ))}
+        </div>
+    );
 }
 
 export default TaskList;

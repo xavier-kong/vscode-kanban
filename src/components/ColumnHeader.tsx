@@ -122,8 +122,8 @@ function ColumnHeader({
                 >
                     <Typography
                         sx={{
-                            marginTop: '3%',
-                            marginBottom: '7%',
+                            marginTop: '5px',
+                            marginBottom: '11px',
                         }}
                     >
                         {name}
