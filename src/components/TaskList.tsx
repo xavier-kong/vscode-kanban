@@ -1,4 +1,5 @@
 import Tasks from '../types/Tasks';
+import SingleTask from './SingleTask';
 
 interface PropTypes {
     tasks: Tasks[];
@@ -8,7 +9,7 @@ function TaskList({ tasks }: PropTypes) {
     return (
         <div>
             {tasks.map((task) => (
-                <div>{task.name}</div>
+                <SingleTask task={task} />
             ))}
         </div>
     );
