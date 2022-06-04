@@ -31,6 +31,11 @@ const mockData = {
             column: 'To do',
             position: 0,
         },
+        {
+            name: 'another one',
+            column: 'Doing',
+            position: 0,
+        },
     ],
 };
 
